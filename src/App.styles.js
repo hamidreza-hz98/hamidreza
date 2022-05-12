@@ -1,7 +1,5 @@
-import { Box, styled } from "@mui/material";
+import { Box, Grid, styled } from "@mui/material";
 
-export const AppContainer = styled(Box)({
-  padding: "0px",
-  margin: "0px",
+export const AppContainer = styled(Grid)({
   backgroundColor: "#FAFAFA",
 });

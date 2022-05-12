@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Box, SvgIcon } from "@mui/material";
 
@@ -57,7 +57,7 @@ const ButtonsComplex = () => {
       {buttons.map((button) => (
         <ButtonContainer key={button.id}>
           <CustomButton>
-            <SvgIcon component={button.icon} />
+            <SvgIcon component={button.icon} sx={{ mr: "15px" }} />
             {button.title}
           </CustomButton>
         </ButtonContainer>

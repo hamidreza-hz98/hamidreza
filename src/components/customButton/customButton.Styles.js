@@ -1,7 +1,7 @@
 import { Button, styled } from "@mui/material";
 
-export const SideBarButton = styled(Button)({
-  backgroundColor: "#4048D6",
+export const SideBarButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
   paddingTop: "8px",
   textTransform: "capitalize",
   color: "#FFFFFF",
@@ -10,4 +10,7 @@ export const SideBarButton = styled(Button)({
   width: "100%",
   justifyContent: "start",
   fontSize: "15px",
-});
+  ":active": {
+    backgroundColor: theme.palette.primary.second,
+  },
+}));

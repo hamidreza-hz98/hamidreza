@@ -3,10 +3,11 @@ import React from "react";
 import {
   AppointmentsTabContainer,
   ProfilePageContainer,
-  SalesReportContainer,
 } from "./clientProfilePage.styles";
 
 import ClientInfo from "../../components/clientInfo/clientInfo";
+import SalesReport from "../../components/salesReport/salesReport";
+import CustomTab from "../../components/Tab/tab";
 
 const ClientProfilePage = () => {
   return (
@@ -14,14 +15,11 @@ const ClientProfilePage = () => {
       <Grid item xs={3}>
         <ClientInfo />
       </Grid>
-
       <Grid item xs={9}>
-        <SalesReportContainer>
-          {/* 
-            the sales box goes here
-          */}
-        </SalesReportContainer>
-        <AppointmentsTabContainer></AppointmentsTabContainer>
+        <SalesReport />
+        <AppointmentsTabContainer>
+          <CustomTab />
+        </AppointmentsTabContainer>
       </Grid>
     </ProfilePageContainer>
   );

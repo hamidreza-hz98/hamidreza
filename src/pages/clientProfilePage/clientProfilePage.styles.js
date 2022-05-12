@@ -1,25 +1,13 @@
-import { Box, Grid, styled, Typography } from "@mui/material";
-import CustomButton from "../../components/customButton/customButton";
-import { SideBarButton } from "../../components/customButton/customButton.Styles";
+import { Box, Grid, styled } from "@mui/material";
 
-export const ProfilePageContainer = styled(Grid)({
+export const ProfilePageContainer = styled(Grid)(({ theme }) => ({
   height: "97.4%",
-  padding: "15px",
-});
-
-//styles for sales report
-export const SalesReportContainer = styled(Box)({
-  backgroundColor: "#FFFFFF",
-  height: "30%",
-  marginBottom: "20px",
-  padding: 0,
-  boxShadow: "inset 0px -1px 0px rgba(0, 0, 0, 0.1)",
-});
+}));
 
 //styles for tab
 export const AppointmentsTabContainer = styled(Box)({
   backgroundColor: "#FFFFFF",
-  height: "55%",
+  height: "55vh",
   padding: 0,
-  boxShadow: "inset 0px -1px 0px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0px 8px 34px rgba(10, 31, 68, 0.08)",
 });

@@ -8,11 +8,13 @@ import {
   LogoContainer,
   SettingsButtonContainer,
   CloseContainer,
+  CustomDivider,
 } from "./sideBar.styles";
 import ButtonsMenu from "./buttonsMenu/buttonsMenu";
 import { ReactComponent as CloseButton } from "../../assets/sideBarVectors/closeButton.svg";
-import { SvgIcon } from "@mui/material";
+import { Divider, SvgIcon } from "@mui/material";
 import SettingsButton from "./settingsButton/settingsButton";
+import { DownContainer } from "./sideBar.styles";
 
 const SideBar = () => {
   return (
@@ -25,13 +27,18 @@ const SideBar = () => {
         <MenuBox>
           <ButtonsMenu />
         </MenuBox>
+      </LinksContainer>
+
+      <DownContainer>
+        <CustomDivider />
         <SettingsButtonContainer>
           <SettingsButton />
         </SettingsButtonContainer>
+        <CustomDivider />
         <CloseContainer>
           <SvgIcon component={CloseButton} />
         </CloseContainer>
-      </LinksContainer>
+      </DownContainer>
     </SideBarContainer>
   );
 };

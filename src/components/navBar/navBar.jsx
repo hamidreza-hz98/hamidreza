@@ -12,9 +12,9 @@ const NavBar = () => {
   return (
     <Header position="static">
       <Toolbar>
-        <Text variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        {/* <Text variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Clients
-        </Text>
+        </Text> */}
         <Right>
           <SvgIcon
             sx={{ marginRight: "10px", marginTop: "2px" }}
