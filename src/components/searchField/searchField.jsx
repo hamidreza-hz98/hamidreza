@@ -1,14 +1,22 @@
-import { InputBase, Paper, SvgIcon } from "@mui/material";
 import React from "react";
 import { ReactComponent as SearchIcon } from "../../assets/navBar/search.svg";
-import { FieldContainer, Icon, Input } from "./searchField.styles";
+import { Icon, Field } from "./searchField.styles";
 
 const SearchField = () => {
   return (
-    <FieldContainer component="form">
-      <Icon component={SearchIcon} />
-      <Input placeholder="Search" />
-    </FieldContainer>
+    // TODO: For all of your inputs, only and only use TextField component
+    <Field
+      variant="standard"
+      placeholder="Search"
+      InputProps={{
+        startAdornment: (
+          <>
+            <Icon component={SearchIcon} />
+          </>
+        ),
+        disableUnderline: true,
+      }}
+    />
   );
 };
 

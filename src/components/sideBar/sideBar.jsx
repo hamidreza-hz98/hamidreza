@@ -1,44 +1,98 @@
 import React from "react";
-
 import {
   SideBarContainer,
-  LinksContainer,
-  MenuBox,
   SideBarLogo,
   LogoContainer,
-  SettingsButtonContainer,
   CloseContainer,
   CustomDivider,
 } from "./sideBar.styles";
-import ButtonsMenu from "./buttonsMenu/buttonsMenu";
 import { ReactComponent as CloseButton } from "../../assets/sideBarVectors/closeButton.svg";
-import { Divider, SvgIcon } from "@mui/material";
+import {
+  SvgIcon,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  List,
+} from "@mui/material";
 import SettingsButton from "./settingsButton/settingsButton";
-import { DownContainer } from "./sideBar.styles";
+import { DownContainer, ButtonTitleText } from "./sideBar.styles";
+import { useTheme } from "@mui/material/styles";
+import { ReactComponent as HomeIcon } from "../../assets/sideBarVectors/home.svg";
+import { ReactComponent as Calendar } from "../../assets/sideBarVectors/calendar.svg";
+import { ReactComponent as Staff } from "../../assets/sideBarVectors/staff.svg";
+import { ReactComponent as Clients } from "../../assets/sideBarVectors/clients.svg";
+import { ReactComponent as Services } from "../../assets/sideBarVectors/services.svg";
+import { ReactComponent as Offers } from "../../assets/sideBarVectors/offers.svg";
+import { ReactComponent as Sales } from "../../assets/sideBarVectors/sales.svg";
 
 const SideBar = () => {
+  const theme = useTheme();
+  const buttons = [
+    {
+      title: "Home",
+      id: 1,
+      icon: HomeIcon,
+    },
+    {
+      title: "Calendar",
+      id: 2,
+      icon: Calendar,
+    },
+    {
+      title: "Clients",
+      id: 3,
+      icon: Clients,
+    },
+    {
+      title: "Staff",
+      id: 4,
+      icon: Staff,
+    },
+    {
+      title: "Services",
+      id: 5,
+      icon: Services,
+    },
+    {
+      title: "Offers",
+      id: 6,
+      icon: Offers,
+    },
+    {
+      title: "Sales",
+      id: 7,
+      icon: Sales,
+    },
+  ];
   return (
-    <SideBarContainer>
+    <SideBarContainer variant="persistent" anchor="left" open>
       <LogoContainer>
         <SideBarLogo />
       </LogoContainer>
 
-      <LinksContainer>
-        <MenuBox>
-          <ButtonsMenu />
-        </MenuBox>
-      </LinksContainer>
+      <List>
+        {buttons.map((button) => (
+          <ListItem key={button.id} sx={{ mr: theme.spacing(2) }}>
+            <ListItemButton>
+              <ListItemIcon>
+                <SvgIcon component={button.icon} />
+                <ButtonTitleText>{button.title}</ButtonTitleText>
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
 
-      <DownContainer>
-        <CustomDivider />
-        <SettingsButtonContainer>
+      <List sx={{ mt: "auto" }}>
+        <DownContainer>
+          <CustomDivider />
           <SettingsButton />
-        </SettingsButtonContainer>
-        <CustomDivider />
-        <CloseContainer>
-          <SvgIcon component={CloseButton} />
-        </CloseContainer>
-      </DownContainer>
+          <CustomDivider />
+          <CloseContainer>
+            <SvgIcon component={CloseButton} />
+          </CloseContainer>
+        </DownContainer>
+      </List>
     </SideBarContainer>
   );
 };

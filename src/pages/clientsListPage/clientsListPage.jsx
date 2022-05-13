@@ -7,7 +7,10 @@ import ClientsTable from "../../components/clientsTable/clientsTable";
 
 const ClientsListpage = () => {
   return (
+    // TODO: Change grid to type of container
+    // REMEMBER: Container is a row and item is your column xs={}
     <Grid item sx={{ flexGrid: 1 }}>
+      {/* TODO: DO NOT MAKE SOMETHING YOU FRAMEWORK ALREADY PROVIDES ! */}
       <Row>
         <SearchButton />
         <NewClient>New Client</NewClient>

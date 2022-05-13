@@ -1,18 +1,17 @@
-import { Box, Divider } from "@mui/material";
+import { Box, Divider, Typography, Drawer } from "@mui/material";
 import { styled } from "@mui/system";
 import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
 import Color from "color";
 
-export const SideBarContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  height: "100%",
-  position: "fixed",
-  width: "248px",
-  backgroundColor: theme.palette.primary.main,
-  maxWidth: "248px",
-  [theme.breakpoints.down("md")]: {
-    display: "none",
+export const SideBarContainer = styled(Drawer)(({ theme }) => ({
+  width: "240px",
+  flexShrink: "0",
+  "& .MuiDrawer-paper": {
+    width: "240px",
+    boxSizing: "border-box",
+  },
+  ".css-12i7wg6-MuiPaper-root-MuiDrawer-paper": {
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 
@@ -24,14 +23,21 @@ export const LogoContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 }));
+
 export const SideBarLogo = styled(Logo)({});
+
 export const MenuBox = styled(Box)({
   width: "100%",
 });
+
 export const LinksContainer = styled(Box)({
-  //height: "100%",
   backgroundColor: "#4048D6",
 });
+
+export const ButtonTitleText = styled(Typography)(({ theme }) => ({
+  fontSize: "16px",
+  color: theme.palette.base.main,
+}));
 
 export const SettingsButtonContainer = styled(Box)({
   pDDIND: "0",
@@ -54,7 +60,7 @@ export const CloseContainer = styled(Box)({
   alignItems: "end",
   justifyContent: "end",
   marginRight: 20,
-  marginBottom: 10,
+  marginBottom: 0,
 });
 
 export const DownContainer = styled(Box)({
