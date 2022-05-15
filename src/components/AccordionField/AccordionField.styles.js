@@ -1,4 +1,12 @@
-import { styled, Typography } from "@mui/material";
+import { styled, Typography, Accordion } from "@mui/material";
+
+export const StyledAccordion = styled(Accordion)({
+  padding: "20px 0px",
+  width: "60%",
+  height: "auto",
+  marginTop: "30px",
+  boxShadow: "0px 8px 34px rgba(10, 31, 68, 0.08)",
+});
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontSize: "18px",

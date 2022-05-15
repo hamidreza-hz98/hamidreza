@@ -3,29 +3,39 @@ import React from "react";
 
 //mui components
 import {
-  Accordion,
   AccordionDetails,
   AccordionSummary,
   Container,
+  Divider,
   SvgIcon,
   Typography,
 } from "@mui/material";
-import { Description, Title } from "./AccordionField.styles";
+import { Description, StyledAccordion, Title } from "./AccordionField.styles";
 
 //icons...
 import { ReactComponent as AccordionOpen } from "../../assets/modal/accordionArrow.svg";
+import FieldGroup from "../FieldGroup/FieldGroup";
+import PersonalDetails from "../PersonalDetails/PersonalDetails";
+import AdditionalDetails from "../AdditionalDetails/AdditionalDetails";
+import Address from "../Address/Address";
 
 const AccordionField = (props) => {
   const { title, description } = props.data;
+
+  const handleFormtype = (title) => {
+    switch (title) {
+      case "Personal details":
+        return <PersonalDetails />;
+      case "Additional details":
+        return <AdditionalDetails />;
+      case "Address":
+        return <Address />;
+    }
+  };
+
   return (
     <Container sx={{ display: "flex", justifyContent: "center" }}>
-      <Accordion
-        sx={{
-          width: "60%",
-          mt: "30px",
-          boxShadow: "0px 8px 34px rgba(10, 31, 68, 0.08)",
-        }}
-      >
+      <StyledAccordion>
         <AccordionSummary
           sx={{
             "& .css-i4bv87-MuiSvgIcon-root": { fill: "none" },
@@ -38,9 +48,10 @@ const AccordionField = (props) => {
           </Container>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Here will come some fields...</Typography>
+          <Divider />
+          <Container>{handleFormtype(title)}</Container>
         </AccordionDetails>
-      </Accordion>
+      </StyledAccordion>
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 //react components...
-import React from "react";
+import React, { useState } from "react";
 
 //mui components...
 import { Container, Grid } from "@mui/material";
@@ -11,6 +11,10 @@ import ClientsTable from "../../components/clientsTable/clientsTable";
 import ModalForm from "../../components/ModalForm/ModalForm";
 
 const ClientsListpage = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
   return (
     <Container>
       <Grid container sx={{ width: "100%" }}>
@@ -18,8 +22,8 @@ const ClientsListpage = () => {
           <SearchButton />
         </Grid>
         <BtnContainer item xs={6}>
-          <NewClient>New Client</NewClient>
-          <ModalForm />
+          <NewClient onClick={handleOpenModal}>New Client</NewClient>
+          <ModalForm openModal={openModal} setOpenModal={setOpenModal} />
         </BtnContainer>
       </Grid>
       <ClientsTable />

@@ -1,4 +1,11 @@
-import { styled, Typography, Grid, Box, Container } from "@mui/material";
+import {
+  styled,
+  Typography,
+  Grid,
+  Box,
+  Container,
+  SvgIcon,
+} from "@mui/material";
 
 export const DateContainer = styled(Container)({
   marginTop: "-13px",
@@ -27,7 +34,6 @@ export const Status = styled(Box)(({ theme }) => ({
 
 export const StatTypo = styled(Typography)(({ theme }) => ({
   fontWeight: "400",
-  marginLeft: "-4px",
   fontSize: "12px",
   color: theme.palette.text.main,
 }));

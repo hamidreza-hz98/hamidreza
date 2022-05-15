@@ -12,8 +12,9 @@ import {
 } from "./DateAndStatus.styles";
 
 //icons...
-import { ReactComponent as Started } from "../../../../assets/appointments/started.svg";
+//import { ReactComponent as Started } from "../../../../assets/appointments/started.svg";
 import { ReactComponent as Completed } from "../../../../assets/appointments/completed.svg";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 
 const DateAndStatus = (props) => {
   return (
@@ -21,9 +22,16 @@ const DateAndStatus = (props) => {
       <CustomDate>{props.date}</CustomDate>
       <Weekday>{props.weekday}</Weekday>
       <Status>
-        <SvgIcon
-          component={props.taskStatus === "Started" ? Started : Completed}
-        />
+        {props.taskStatus === "Started" ? (
+          <SvgIcon
+            color="success"
+            sx={{ width: "16px", height: "17px", ml: "-4px" }}
+            component={PlayCircleIcon}
+          />
+        ) : (
+          <SvgIcon component={Completed} />
+        )}
+
         <StatTypo>{props.taskStatus}</StatTypo>
       </Status>
     </DateContainer>

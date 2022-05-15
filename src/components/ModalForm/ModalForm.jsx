@@ -21,61 +21,35 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function FullScreenDialog() {
+export default function ModalForm({ openModal, setOpenModal }) {
+  console.log(openModal);
   const accordions = [
     {
       title: "Personal details",
       description: "Check & manage name, phone and more about this staff",
-      fields: [
-        { firstName: "" },
-        { lastName: "" },
-        { mobile: "" },
-        { sendNotificationsBy: "" },
-        { PreferredLanguage: "" },
-      ],
+      id: 1,
     },
     {
       title: "Additional details",
       description: "Check & gender, birth date, client notes, etc.",
-      fields: [
-        { gender: "" },
-        { referralSource: "" },
-        { birthDate: "" },
-        { birthdayMonth: "" },
-        { notes: "" },
-      ],
+      id: 2,
     },
     {
       title: "Address",
       description: "Check & manage Avenue, Block, Street, Area, etc. ",
-      fields: [
-        { area: "" },
-        { block: "" },
-        { street: "" },
-        { avenue: "" },
-        { housenumber: "" },
-      ],
+      id: 3,
     },
   ];
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
-    setOpen(false);
+    setOpenModal(false);
   };
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open full-screen dialog
-      </Button>
       <Dialog
         fullScreen
-        open={open}
+        open={openModal}
         onClose={handleClose}
         TransitionComponent={Transition}
         sx={{
@@ -105,51 +79,8 @@ export default function FullScreenDialog() {
 
         <List>
           {accordions.map((accordion) => {
-            return <AccordionField data={accordion} />;
+            return <AccordionField key={accordion.id} data={accordion} />;
           })}
-
-          {/* <ListItem>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<SvgIcon component={AccordionIcon} />}
-              >
-                <Typography>Personal details</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>Here Will come some fields...</Typography>
-              </AccordionDetails>
-            </Accordion>
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<SvgIcon component={AccordionIcon} />}
-              >
-                <Typography>Additional details</Typography>
-                <Typography>
-                  Check & gender, birth date, client notes, etc.
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>Here will come some fields</Typography>
-              </AccordionDetails>
-            </Accordion>
-          </ListItem>
-          <Divider />
-
-          <ListItem>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<SvgIcon component={AccordionIcon} />}
-              >
-                <Typography>Address</Typography>
-                <Typography>
-                  Check & manage Avenue, Block, Street, Area, etc.{" "}
-                </Typography>
-              </AccordionSummary>
-            </Accordion>
-          </ListItem> */}
         </List>
       </Dialog>
     </div>
