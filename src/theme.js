@@ -30,8 +30,8 @@ const theme = createTheme({
       divider: "#595DE3", //for sidebar devider
     },
     base: {
-      main: "#FFFFFF",
-      second: "#E5E5E5",
+      main: "#FFFFFF", //main white bg color
+      second: "#E5E5E5", //gray bg color
     },
   },
 });

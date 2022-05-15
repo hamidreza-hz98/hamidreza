@@ -1,4 +1,4 @@
-import { styled, Box, Typography, Grid } from "@mui/material";
+import { styled, Box, Typography, Grid, Button } from "@mui/material";
 import { SideBarButton } from "../customButton/customButton.Styles";
 
 //styles for profile information...
@@ -9,11 +9,27 @@ export const ProfileInfoContainer = styled(Box)({
   marginBottom: "0px",
 });
 
-export const EditButton = styled(Box)({
+export const EditButton = styled(Button)({
+  width: "50",
+  height: "10",
+  padding: "0px",
+  textTransform: "capitalize",
   color: "#4048D6",
+});
+
+export const EditContainer = styled(Box)({
   display: "flex",
   justifyContent: "end",
+  padding: "26px 24px 18px 0px",
 });
+
+export const EditText = styled(Typography)(({ theme }) => ({
+  fontSize: "16px",
+  fonstWeught: "700",
+  color: theme.palette.primary.main,
+  lineHeight: "20px",
+  marginLeft: "-6px",
+}));
 
 export const NewAppointmentButton = styled(SideBarButton)({
   width: "80%",

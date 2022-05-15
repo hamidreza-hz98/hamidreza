@@ -1,6 +1,11 @@
+//react components...
 import React from "react";
-import { ReactComponent as SearchIcon } from "../../assets/navBar/search.svg";
+
+//mui styles...
 import { Icon, Field } from "./searchField.styles";
+
+//icons...
+import { ReactComponent as SearchIcon } from "../../assets/navBar/search.svg";
 
 const SearchField = () => {
   return (

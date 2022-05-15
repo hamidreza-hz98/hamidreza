@@ -49,21 +49,19 @@ export const SettingsButtonContainer = styled(Box)({
 export const CustomDivider = styled(Divider)(({ theme }) => ({
   backgroundColor: theme.palette.text.divider,
   borderWidth: "1px",
-  margin: "8px",
+  margin: "0px",
   marginLeft: "0",
   width: "100%",
 }));
 
 export const CloseContainer = styled(Box)({
   display: "flex",
-  padding: "0",
   alignItems: "end",
   justifyContent: "end",
-  marginRight: 20,
-  marginBottom: 0,
+  margin: "20px 20px 20px 0px",
 });
 
 export const DownContainer = styled(Box)({
   marginTop: "auto",
-  marginBottom: "36.97px",
+  //marginBottom: "36.97px",
 });

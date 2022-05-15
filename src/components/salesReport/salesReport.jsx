@@ -1,5 +1,7 @@
+//react components...
 import React from "react";
 
+//mui components...
 import { Grid } from "@mui/material";
 import {
   BookingContainer,
@@ -11,6 +13,7 @@ import {
   BookingBox,
   BookingAmount,
 } from "./salesReport.styles";
+
 const SalesReport = () => {
   return (
     <SalesReportContainer>

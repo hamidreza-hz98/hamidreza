@@ -1,4 +1,8 @@
+//react components...
 import React from "react";
+
+//mui components...
+import { SvgIcon, Grid, Divider, Container } from "@mui/material";
 import {
   ProfileInfoContainer,
   NewAppointmentButton,
@@ -6,19 +10,25 @@ import {
   ClientName,
   ToggleGroup,
   AddressTypo,
+  EditContainer,
+  EditText,
 } from "./clientInfo.styles";
-import ToggleSwitch from "../toggleSwitch/toggleSwitch";
-import { SvgIcon, Typography, Grid, Divider, Container } from "@mui/material";
-import { ReactComponent as EditIcon } from "../../assets/profile/edit.svg";
+
+//custom components...
 import ProfileData from "../profileData/profiledata";
+import ToggleSwitch from "../toggleSwitch/toggleSwitch";
+
+//icons...
+import { ReactComponent as EditIcon } from "../../assets/profile/edit.svg";
 
 const ClientInfo = () => {
   return (
     <ProfileInfoContainer>
-      <EditButton>
-        <SvgIcon sx={{ marginTop: 2 }} component={EditIcon} />
-        <Typography sx={{ marginTop: 2, marginRight: 4 }}>Edit</Typography>
-      </EditButton>
+      <EditContainer>
+        <EditButton startIcon={<SvgIcon component={EditIcon} />}>
+          <EditText>Edit</EditText>
+        </EditButton>
+      </EditContainer>
       <ClientName>Hessa Al Hamlan</ClientName>
       <ClientName>
         <NewAppointmentButton>New appointment</NewAppointmentButton>

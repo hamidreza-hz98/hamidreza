@@ -1,10 +1,14 @@
-import { Grid } from "@mui/material";
+//react components...
 import React from "react";
+
+//mui components
+import { Grid } from "@mui/material";
 import {
   AppointmentsTabContainer,
   ProfilePageContainer,
 } from "./clientProfilePage.styles";
 
+//custom components...
 import ClientInfo from "../../components/clientInfo/clientInfo";
 import SalesReport from "../../components/salesReport/salesReport";
 import CustomTab from "../../components/Tab/tab";

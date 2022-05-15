@@ -1,12 +1,8 @@
+//react components...
 import React from "react";
-import {
-  SideBarContainer,
-  SideBarLogo,
-  LogoContainer,
-  CloseContainer,
-  CustomDivider,
-} from "./sideBar.styles";
-import { ReactComponent as CloseButton } from "../../assets/sideBarVectors/closeButton.svg";
+
+//mui components...
+import { useTheme } from "@mui/material/styles";
 import {
   SvgIcon,
   ListItem,
@@ -14,9 +10,21 @@ import {
   ListItemIcon,
   List,
 } from "@mui/material";
+import {
+  SideBarContainer,
+  SideBarLogo,
+  LogoContainer,
+  CloseContainer,
+  CustomDivider,
+  DownContainer,
+  ButtonTitleText,
+} from "./sideBar.styles";
+
+//custom components...
 import SettingsButton from "./settingsButton/settingsButton";
-import { DownContainer, ButtonTitleText } from "./sideBar.styles";
-import { useTheme } from "@mui/material/styles";
+
+//icons...
+import { ReactComponent as CloseButton } from "../../assets/sideBarVectors/closeButton.svg";
 import { ReactComponent as HomeIcon } from "../../assets/sideBarVectors/home.svg";
 import { ReactComponent as Calendar } from "../../assets/sideBarVectors/calendar.svg";
 import { ReactComponent as Staff } from "../../assets/sideBarVectors/staff.svg";
@@ -75,7 +83,7 @@ const SideBar = () => {
           <ListItem key={button.id} sx={{ mr: theme.spacing(2) }}>
             <ListItemButton>
               <ListItemIcon>
-                <SvgIcon component={button.icon} />
+                <SvgIcon component={button.icon} sx={{ mr: "14.5px" }} />
                 <ButtonTitleText>{button.title}</ButtonTitleText>
               </ListItemIcon>
             </ListItemButton>

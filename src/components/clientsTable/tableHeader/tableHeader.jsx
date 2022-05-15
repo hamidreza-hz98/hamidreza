@@ -1,7 +1,8 @@
+//react components...
 import React from "react";
 
+//mui components...
 import { TableHead, TableRow } from "@mui/material";
-
 import { HeaderCell } from "./tableHeader.styles";
 
 const TableHeader = () => {

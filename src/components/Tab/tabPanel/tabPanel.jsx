@@ -1,14 +1,15 @@
+//react components...
 import React from "react";
 import PropTypes from "prop-types";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+
+//mui components...
 import { TabPanelContainer } from "./tabPanel.styles";
 
 const TabPanel = (props) => {
   const { value, index, children } = props;
 
   return (
-    <div sx={{ padding: "0" }}>
+    <div sx={{ padding: "0", height: "200px" }}>
       {value === index && <TabPanelContainer>{children}</TabPanelContainer>}
     </div>
   );

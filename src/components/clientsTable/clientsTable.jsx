@@ -1,19 +1,23 @@
-import { Table } from "@mui/material";
+//react components...
 import React from "react";
+
+//mui components...
+import { Table } from "@mui/material";
+
+//custom components...
 import TableHeader from "./tableHeader/tableHeader";
 import { TableBox } from "./clientsTable.styles";
 import Body from "./tableBody/tableBody";
 
-const MockData = {
-  data: [
-    {
-      name: "",
-      age: "",
-    },
-  ],
-};
-
 const ClientsTable = () => {
+  // const MockData = {
+  //   data: [
+  //     {
+  //       name: "",
+  //       age: "",
+  //     },
+  //   ],
+  // };
   return (
     <TableBox>
       <Table>

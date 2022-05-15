@@ -1,5 +1,8 @@
-import { FormControlLabel, FormGroup, Switch, Typography } from "@mui/material";
+//react components...
 import React from "react";
+
+//mui components...
+import { FormControlLabel } from "@mui/material";
 import {
   CustomSwitch,
   ToggleContainer,

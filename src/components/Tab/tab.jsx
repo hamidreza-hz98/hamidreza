@@ -1,6 +1,11 @@
+//react components...
 import React from "react";
+
+//mui components...
 import Box from "@mui/material/Box";
 import { AntTab, AntTabs } from "./tab.styles";
+
+//custom components...
 import TabPanel from "./tabPanel/tabPanel";
 import AppointmentsTab from "./appointments/appointments";
 

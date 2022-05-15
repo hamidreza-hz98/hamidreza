@@ -4,10 +4,9 @@ export const ProfilePageContainer = styled(Grid)(({ theme }) => ({
   height: "97.4%",
 }));
 
-//styles for tab
 export const AppointmentsTabContainer = styled(Box)({
   backgroundColor: "#FFFFFF",
-  height: "55vh",
+  height: "auto",
   padding: 0,
   boxShadow: "0px 8px 34px rgba(10, 31, 68, 0.08)",
 });

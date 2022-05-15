@@ -1,7 +1,11 @@
+//react components...
 import React from "react";
+import { Link } from "react-router-dom";
+
+//mui components...
 import { TableRow, TableCell, TableBody } from "@mui/material";
 import { StatusCell, EmailCell } from "./tableBody.styles";
-import { Link } from "react-router-dom";
+
 const Body = () => {
   return (
     <TableBody sx={{ height: "68", padding: "0" }}>

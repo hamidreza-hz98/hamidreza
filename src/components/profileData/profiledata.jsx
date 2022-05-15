@@ -1,5 +1,8 @@
-import { Container, Typography } from "@mui/material";
+//react components
 import React from "react";
+
+//mui components...
+import { Typography } from "@mui/material";
 import { DataContainer, DataName } from "./profileData.styles";
 
 const ProfileData = (props) => {

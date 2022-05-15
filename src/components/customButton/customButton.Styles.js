@@ -8,9 +8,11 @@ export const SideBarButton = styled(Button)(({ theme }) => ({
   textAlign: "start",
   display: "flex",
   width: "100%",
+  height: "100%",
   justifyContent: "start",
   fontSize: "15px",
-  ":active": {
+  "&:active": {
     backgroundColor: theme.palette.primary.second,
+    borderRadius: "8px",
   },
 }));

@@ -1,5 +1,5 @@
-import { Box, Grid, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
-export const AppContainer = styled(Grid)({
+export const AppContainer = styled(Box)({
   backgroundColor: "#FAFAFA",
 });

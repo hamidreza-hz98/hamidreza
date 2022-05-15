@@ -1,17 +1,23 @@
+//react components...
 import React from "react";
-import { CssBaseline, Box } from "@mui/material";
+
+//mui components...
+import { CssBaseline } from "@mui/material";
+import { AppContainer } from "./App.styles";
+
+//custom components...
 import SideBar from "./components/sideBar/sideBar";
 import NavBar from "./components/navBar/navBar";
 import MainBody from "./components/MainBody/MainBody";
 
 function App() {
   return (
-    <Box sx={{ display: "flex" }}>
+    <AppContainer sx={{ display: "flex" }}>
       <CssBaseline />
       <NavBar />
       <SideBar />
       <MainBody />
-    </Box>
+    </AppContainer>
   );
 }
 

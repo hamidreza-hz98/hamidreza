@@ -1,5 +1,7 @@
+//react components...
 import React from "react";
-import AppointmentType from "../appointmentType";
+
+//mui components...
 import {
   AppointmentDetailsContainer,
   AppointmentTypeDetail,
