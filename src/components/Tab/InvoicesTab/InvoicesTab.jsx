@@ -1,7 +1,8 @@
-import { Chip } from "@mui/material";
+import { Chip, Typography } from "@mui/material";
 import React from "react";
 import ReusableTable from "../../ReusableTable/ReusableTable";
 import { HeaderTypo } from "../ProductsTab/ProductsTab.styles";
+import { RegularTypo, TotalTypo } from "./InvoicesTab.styles";
 
 const DynamicChip = ({ chipColor }) => {
   console.log(chipColor);
@@ -106,10 +107,10 @@ const InvoicesTab = () => {
   const formattedData = () => {
     return data.map((d) => ({
       status: <DynamicChip chipColor={d.status} />,
-      id: d.id,
-      date: d.date,
-      location: d.location,
-      total: d.total,
+      id: <RegularTypo>{d.id}</RegularTypo>,
+      date: <RegularTypo>{d.date}</RegularTypo>,
+      location: <RegularTypo>{d.location}</RegularTypo>,
+      total: <TotalTypo>{d.total}</TotalTypo>,
     }));
   };
   return <ReusableTable headers={formattedHeaders()} data={formattedData()} />;

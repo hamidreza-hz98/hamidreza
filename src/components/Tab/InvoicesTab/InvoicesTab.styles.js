@@ -1,13 +1,15 @@
-import { Chip, styled } from "@mui/material";
+import { Chip, styled, Typography } from "@mui/material";
 
-const chipColors = {
-  Paid: "#E4FAF7",
-  Unpaid: "#FFE7EB",
-  Void: "#F6E3FF",
-  Refound: "#FCF3E4",
-  Exchange: "#E4FAF7",
-};
+export const RegularTypo = styled(Typography)({
+  fontWeight: "400",
+  fontSize: "16px",
+  lineHeight: "20px",
+  color: "#000000",
+});
 
-export const StyledChip = styled(Chip)({
-  backgroundColor: "",
+export const TotalTypo = styled(Typography)({
+  fontWeight: "500",
+  fontSize: "16px",
+  lineHeight: "20px",
+  color: "#000000",
 });
