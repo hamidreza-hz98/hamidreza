@@ -8,6 +8,8 @@ import { AntTab, AntTabs } from "./tab.styles";
 //custom components...
 import TabPanel from "./tabPanel/tabPanel";
 import AppointmentsTab from "./appointments/appointments";
+import InvoicesTab from "./InvoicesTab/InvoicesTab";
+import ProductsTab from "./ProductsTab/ProductsTab";
 
 function CustomTab() {
   const [value, setValue] = React.useState(0);
@@ -32,11 +34,11 @@ function CustomTab() {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        Invoices
+        <InvoicesTab />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        Products
+        <ProductsTab />
       </TabPanel>
     </Box>
   );

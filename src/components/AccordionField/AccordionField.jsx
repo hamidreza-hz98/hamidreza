@@ -1,5 +1,9 @@
 //react components...
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { clientSchema } from "../../helperText/clientSchema";
 
 //mui components
 import {
@@ -14,13 +18,20 @@ import { Description, StyledAccordion, Title } from "./AccordionField.styles";
 
 //icons...
 import { ReactComponent as AccordionOpen } from "../../assets/modal/accordionArrow.svg";
-import FieldGroup from "../FieldGroup/FieldGroup";
 import PersonalDetails from "../PersonalDetails/PersonalDetails";
 import AdditionalDetails from "../AdditionalDetails/AdditionalDetails";
 import Address from "../Address/Address";
 
 const AccordionField = (props) => {
   const { title, description } = props.data;
+
+  const methods = useForm({
+    resolver: yupResolver(clientSchema),
+  });
+
+  const submitForm = (data) => {
+    console.log("form submitted...!", data);
+  };
 
   const handleFormtype = (title) => {
     switch (title) {
@@ -49,7 +60,11 @@ const AccordionField = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Divider />
-          <Container>{handleFormtype(title)}</Container>
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(submitForm)}>
+              <Container>{handleFormtype(title)}</Container>
+            </form>
+          </FormProvider>
         </AccordionDetails>
       </StyledAccordion>
     </Container>

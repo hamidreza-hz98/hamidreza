@@ -8,13 +8,17 @@ import {
   TextField,
   useTheme,
 } from "@mui/material";
-import { styled } from "@mui/system";
 import React, { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 
 const PersonalDetails = () => {
   const [phone, setPhone] = useState();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   const theme = useTheme();
 
@@ -28,7 +32,7 @@ const PersonalDetails = () => {
     <>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <TextField fullWidth label="First Name" />
+          <TextField fullWidth label="First Name" {...register("firstName")} />
         </Grid>
         <Grid item xs={6}>
           <TextField fullWidth label="Last Name" />

@@ -22,7 +22,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function ModalForm({ openModal, setOpenModal }) {
-  console.log(openModal);
   const accordions = [
     {
       title: "Personal details",
@@ -76,7 +75,6 @@ export default function ModalForm({ openModal, setOpenModal }) {
             </Button>
           </Toolbar>
         </ModalHeader>
-
         <List>
           {accordions.map((accordion) => {
             return <AccordionField key={accordion.id} data={accordion} />;
