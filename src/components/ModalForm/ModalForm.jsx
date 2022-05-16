@@ -1,5 +1,8 @@
 //react components...
 import React from "react";
+import { useForm, FormProvider } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { clientSchema } from "../../helperText/clientSchema";
 
 //mui components...
 import {
@@ -40,47 +43,66 @@ export default function ModalForm({ openModal, setOpenModal }) {
     },
   ];
 
+  const methods = useForm({
+    resolver: yupResolver(clientSchema),
+  });
+
   const handleClose = () => {
     setOpenModal(false);
   };
 
+  const submitForm = (data) => {
+    console.log("form submitted", data);
+  };
+
   return (
     <div>
-      <Dialog
-        fullScreen
-        open={openModal}
-        onClose={handleClose}
-        TransitionComponent={Transition}
-        sx={{
-          "& .css-m9glnp-MuiPaper-root-MuiDialog-paper": {
-            backgroundColor: "#E5E5E5",
-          },
-        }}
-      >
-        <ModalHeader
-          sx={{
-            position: "relative",
-          }}
-        >
-          <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-            <IconButton edge="start" color="inherit" onClick={handleClose}>
-              <SvgIcon component={CloseModal} />
-            </IconButton>
-            <HeaderTitle variant="h6" component="div">
-              New Client
-            </HeaderTitle>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(submitForm)}>
+          <Dialog
+            fullScreen
+            open={openModal}
+            onClose={handleClose}
+            TransitionComponent={Transition}
+            sx={{
+              "& .css-m9glnp-MuiPaper-root-MuiDialog-paper": {
+                backgroundColor: "#E5E5E5",
+              },
+            }}
+          >
+            <ModalHeader
+              sx={{
+                position: "relative",
+              }}
+            >
+              <Toolbar
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <IconButton edge="start" color="inherit" onClick={handleClose}>
+                  <SvgIcon component={CloseModal} />
+                </IconButton>
+                <HeaderTitle variant="h6" component="div">
+                  New Client
+                </HeaderTitle>
 
-            <Button autoFocus variant="contained" onClick={handleClose}>
-              save
-            </Button>
-          </Toolbar>
-        </ModalHeader>
-        <List>
-          {accordions.map((accordion) => {
-            return <AccordionField key={accordion.id} data={accordion} />;
-          })}
-        </List>
-      </Dialog>
+                <Button
+                  type="submit"
+                  autoFocus
+                  variant="contained"
+                  onClick={methods.handleSubmit(submitForm)}
+                >
+                  save
+                </Button>
+              </Toolbar>
+            </ModalHeader>
+            <List>
+              {accordions.map((accordion) => {
+                return <AccordionField key={accordion.id} data={accordion} />;
+              })}
+            </List>
+          </Dialog>
+        </form>
+      </FormProvider>
     </div>
   );
 }

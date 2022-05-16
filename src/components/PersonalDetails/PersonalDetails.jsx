@@ -12,7 +12,6 @@ import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
-
 const PersonalDetails = () => {
   const [phone, setPhone] = useState();
   const {
@@ -32,10 +31,24 @@ const PersonalDetails = () => {
     <>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <TextField fullWidth label="First Name" {...register("firstName")} />
+          <TextField
+            fullWidth
+            label="First Name"
+            name="firstName"
+            error={errors.firstName}
+            helperText={errors.firstName && errors.firstName?.message}
+            {...register("firstName")}
+          />
         </Grid>
         <Grid item xs={6}>
-          <TextField fullWidth label="Last Name" />
+          <TextField
+            fullWidth
+            label="Last Name"
+            name="lastName"
+            error={errors.lastName}
+            helperText={errors.lastName && errors.lastName?.message}
+            {...register("lastName")}
+          />
         </Grid>
       </Grid>
       <Box
@@ -56,19 +69,28 @@ const PersonalDetails = () => {
           placeholder="Mobile number"
           value={phone}
           onChange={(phone) => setPhone(phone)}
+          name="mobile"
+          error={errors.mobile}
+          helperText={errors.mobile && errors.mobile?.message}
+          {...register("mobile")}
         />
       </Box>
 
       <TextField fullWidth label="Send notifications by" />
 
-      <FormControl fullWidth>
-        <InputLabel>Preferred Language</InputLabel>
-        <Select label="Preferred Language">
-          <MenuItem value="English">English</MenuItem>
-          <MenuItem value="Arabic">Arabic</MenuItem>
-          <MenuItem value="French">French</MenuItem>
-        </Select>
-      </FormControl>
+      <TextField
+        fullWidth
+        select
+        name="preferredlanguage"
+        error={errors.preferredlanguage}
+        helperText={
+          errors.preferredlanguage && errors.preferredlanguage?.message
+        }
+      >
+        <MenuItem value="English">English</MenuItem>
+        <MenuItem value="Arabic">Arabic</MenuItem>
+        <MenuItem value="French">French</MenuItem>
+      </TextField>
     </>
   );
 };

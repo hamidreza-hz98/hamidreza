@@ -1,5 +1,20 @@
+import { Chip } from "@mui/material";
 import React from "react";
 import ReusableTable from "../../ReusableTable/ReusableTable";
+import { HeaderTypo } from "../ProductsTab/ProductsTab.styles";
+
+const DynamicChip = ({ chipColor }) => {
+  console.log(chipColor);
+  const chipColors = {
+    Paid: "#E4FAF7",
+    Unpaid: "#FFE7EB",
+    Void: "#F6E3FF",
+    Refound: "#FCF3E4",
+    Exchange: "#E4FAF7",
+  };
+
+  return <Chip label={chipColor} color={chipColors.chipColor} />;
+};
 
 const InvoicesTab = () => {
   const InvoicesData = {
@@ -71,8 +86,33 @@ const InvoicesTab = () => {
     ],
   };
 
+  const chipColors = {
+    Paid: "#E4FAF7",
+    Unpaid: "#FFE7EB",
+    Void: "#F6E3FF",
+    Refound: "#FCF3E4",
+    Exchange: "#E4FAF7",
+  };
+
   const { headers, data } = InvoicesData;
-  return <ReusableTable headers={headers} data={data} />;
+
+  const formattedHeaders = () => {
+    return headers.map((head) => ({
+      name: <HeaderTypo> {head.name} </HeaderTypo>,
+      key: head.key,
+    }));
+  };
+
+  const formattedData = () => {
+    return data.map((d) => ({
+      status: <DynamicChip chipColor={d.status} />,
+      id: d.id,
+      date: d.date,
+      location: d.location,
+      total: d.total,
+    }));
+  };
+  return <ReusableTable headers={formattedHeaders()} data={formattedData()} />;
 };
 
 export default InvoicesTab;

@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import { spacing } from "@mui/system";
 
 const palette = {
   primary: {
@@ -42,35 +43,17 @@ const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          "& label.Mui-focused": {
-            color: palette.text.second,
-          },
-          "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-              borderColor: "rgba(64, 72, 214, 0.4)",
-            },
-            "&:hover fieldset": {
-              borderColor: "rgba(64, 72, 214, 0.4)",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "rgba(64, 72, 214, 0.4)",
-            },
-            "&::placeholder": {
-              textOverflow: "ellipsis !important",
-              color: palette.text.second,
-            },
-          },
-          borderColor: "1px solid rgba(64, 72, 214, 0.4)",
-          borderRadius: "8px",
-          height: "48px",
-          marginTop: "32px",
-        },
-      },
-    },
+          ".MuiFormHelperText-root": {
+            color: "#F43319",
+            backgroundColor: "rgba(244, 51, 25, 0.06)",
+            borderRadius: "8px",
+            fontSize: "12px",
+            paddingLeft: "12px",
 
-    MuiFormControl: {
-      styleOverrides: {
-        root: {
+            marginLeft: "0px",
+            marginBottom: "20px",
+            width: "100%",
+          },
           "& label.Mui-focused": {
             color: palette.text.second,
           },
@@ -94,34 +77,6 @@ const theme = createTheme({
           height: "48px",
           marginTop: "32px",
         },
-      },
-    },
-  },
-  MuiSelect: {
-    styleOverrides: {
-      root: {
-        "& label.Mui-focused": {
-          color: palette.text.second,
-        },
-        "& .MuiOutlinedInput-root": {
-          "& fieldset": {
-            borderColor: "rgba(64, 72, 214, 0.4)",
-          },
-          "&:hover fieldset": {
-            borderColor: "rgba(64, 72, 214, 0.4)",
-          },
-          "&.Mui-focused fieldset": {
-            borderColor: "rgba(64, 72, 214, 0.4)",
-          },
-          "&::placeholder": {
-            textOverflow: "ellipsis !important",
-            color: palette.text.second,
-          },
-        },
-        borderColor: "1px solid rgba(64, 72, 214, 0.4)",
-        borderRadius: "8px",
-        height: "48px",
-        marginTop: "32px",
       },
     },
   },

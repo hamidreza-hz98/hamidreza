@@ -1,6 +1,6 @@
 //react components...
 import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, useFormContext } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { clientSchema } from "../../helperText/clientSchema";
@@ -25,14 +25,6 @@ import Address from "../Address/Address";
 const AccordionField = (props) => {
   const { title, description } = props.data;
 
-  const methods = useForm({
-    resolver: yupResolver(clientSchema),
-  });
-
-  const submitForm = (data) => {
-    console.log("form submitted...!", data);
-  };
-
   const handleFormtype = (title) => {
     switch (title) {
       case "Personal details":
@@ -45,10 +37,17 @@ const AccordionField = (props) => {
   };
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center" }}>
+    <Container
+      sx={{
+        maxWidth: "1450px !important",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <StyledAccordion>
         <AccordionSummary
           sx={{
+            padding: "9x",
             "& .css-i4bv87-MuiSvgIcon-root": { fill: "none" },
           }}
           expandIcon={<SvgIcon component={AccordionOpen} />}
@@ -60,11 +59,7 @@ const AccordionField = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Divider />
-          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(submitForm)}>
-              <Container>{handleFormtype(title)}</Container>
-            </form>
-          </FormProvider>
+          <Container>{handleFormtype(title)}</Container>
         </AccordionDetails>
       </StyledAccordion>
     </Container>

@@ -1,5 +1,13 @@
 import React from "react";
 import ReusableTable from "../../ReusableTable/ReusableTable";
+import {
+  DateTypo,
+  HeaderTypo,
+  InvoiceTypo,
+  LocationTypo,
+  ProductNameTypo,
+  TotalTypo,
+} from "./ProductsTab.styles";
 
 const ProductsTab = () => {
   const ProductsData = {
@@ -42,22 +50,26 @@ const ProductsTab = () => {
     ],
   };
 
-  const formattedData = () => {
-    return data.map((d) => ({
-      invoiceNumber: d.invoiceNumber,
-      productName: d.productName,
-      date: d.date,
-      location: d.location,
-      total: (
-        <div>
-          <b>d.total</b>
-        </div>
-      ),
-    }));
-  };
   const { headers, data } = ProductsData;
 
-  return <ReusableTable headers={headers} data={formattedData()} />;
+  const formattedHeaders = () => {
+    return headers.map((head) => ({
+      name: <HeaderTypo>{head.name}</HeaderTypo>,
+      key: head.key,
+    }));
+  };
+
+  const formattedData = () => {
+    return data.map((d) => ({
+      invoiceNumber: <InvoiceTypo>{d.invoiceNumber}</InvoiceTypo>,
+      productName: <ProductNameTypo>{d.productName}</ProductNameTypo>,
+      date: <DateTypo>{d.date}</DateTypo>,
+      location: <LocationTypo>{d.location}</LocationTypo>,
+      total: <TotalTypo>{d.total}</TotalTypo>,
+    }));
+  };
+
+  return <ReusableTable headers={formattedHeaders()} data={formattedData()} />;
 };
 
 export default ProductsTab;
