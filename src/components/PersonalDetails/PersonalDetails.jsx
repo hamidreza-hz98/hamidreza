@@ -13,10 +13,11 @@ import { useFormContext } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 const PersonalDetails = () => {
-  const [phone, setPhone] = useState();
   const {
     register,
     formState: { errors },
+    setValue,
+    watch,
   } = useFormContext();
 
   const theme = useTheme();
@@ -67,12 +68,13 @@ const PersonalDetails = () => {
           inputStyle={style}
           country={"ae"}
           placeholder="Mobile number"
-          value={phone}
-          onChange={(phone) => setPhone(phone)}
+          value={watch("mobile")}
+          onChange={(phone) => {
+            setValue("mobile", phone);
+          }}
           name="mobile"
           error={errors.mobile}
           helperText={errors.mobile && errors.mobile?.message}
-          {...register("mobile")}
         />
       </Box>
 
@@ -86,6 +88,7 @@ const PersonalDetails = () => {
         helperText={
           errors.preferredlanguage && errors.preferredlanguage?.message
         }
+        {...register("preferredlanguage")}
       >
         <MenuItem value="English">English</MenuItem>
         <MenuItem value="Arabic">Arabic</MenuItem>

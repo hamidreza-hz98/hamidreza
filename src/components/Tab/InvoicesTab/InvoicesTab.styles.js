@@ -8,7 +8,7 @@ export const RegularTypo = styled(Typography)({
 });
 
 export const TotalTypo = styled(Typography)({
-  fontWeight: "500",
+  fontWeight: "600",
   fontSize: "16px",
   lineHeight: "20px",
   color: "#000000",

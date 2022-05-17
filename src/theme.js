@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material";
-import { spacing } from "@mui/system";
 
 const palette = {
   primary: {
@@ -40,6 +39,30 @@ const theme = createTheme({
   palette,
 
   components: {
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+          ":hover": {
+            backgroundColor: "rgba(0.1,0.1,0.1,0.1)",
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px",
+          width: "80%",
+          height: "36px",
+          "& .MuiChip-label": {
+            fontSize: "12px",
+            lineHeight: "20px",
+            color: palette.text.main,
+          },
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {

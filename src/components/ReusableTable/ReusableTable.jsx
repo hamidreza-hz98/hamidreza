@@ -4,12 +4,12 @@ import TableHeader from "./TableHeader/TableHeader";
 import TableRows from "./TableRows/TableRows";
 
 const ReusableTable = (props) => {
-  const { headers, data } = props;
+  const { headers, data, link } = props;
   return (
     <TableContainer sx={{ backgroundColor: "#FFFFFF", mt: 3, px: 3 }}>
       <Table>
         <TableHeader headers={headers} />
-        <TableRows data={data} headers={headers} />
+        <TableRows data={data} headers={headers} link={link} />
       </Table>
     </TableContainer>
   );

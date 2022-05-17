@@ -1,9 +1,5 @@
 //react components...
 import React from "react";
-import { FormProvider, useForm, useFormContext } from "react-hook-form";
-
-import { yupResolver } from "@hookform/resolvers/yup";
-import { clientSchema } from "../../helperText/clientSchema";
 
 //mui components
 import {
@@ -12,7 +8,6 @@ import {
   Container,
   Divider,
   SvgIcon,
-  Typography,
 } from "@mui/material";
 import { Description, StyledAccordion, Title } from "./AccordionField.styles";
 

@@ -4,7 +4,7 @@ export const HeaderTypo = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
   lineHeight: "20px",
   color: theme.palette.text.main,
-  fontWeight: "500",
+  fontWeight: "600",
 }));
 
 export const InvoiceTypo = styled(Typography)(({ theme }) => ({

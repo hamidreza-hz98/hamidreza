@@ -2,10 +2,17 @@
 import React from "react";
 
 //mui components...
-import { Table } from "@mui/material";
+import { Chip, Table } from "@mui/material";
 
 //custom components...
 import ReusableTable from "../ReusableTable/ReusableTable";
+import {
+  ClientHeader,
+  EmailTypo,
+  MobileTypo,
+  NameTypo,
+} from "./clientsTable.styles";
+import { Link } from "react-router-dom";
 
 const ClientsTable = () => {
   const ClientsData = {
@@ -32,7 +39,7 @@ const ClientsTable = () => {
         name: "Hessa Al Hamlan",
         mobile: "+965 60 00 12 87",
         email: "h.alhamlan@gmail.com",
-        status: "vip",
+        status: "VIP",
       },
       {
         name: "Kasib Qutaiba Asfour",
@@ -110,6 +117,7 @@ const ClientsTable = () => {
       },
       {
         name: "Atifa Arij Ganem",
+        mobile: "+965 60 00 12 87",
         email: "AtifaArijGanem@armyspy.com",
         status: "VIP",
       },
@@ -151,37 +159,41 @@ const ClientsTable = () => {
       },
     ],
   };
+
+  const chipColors = [
+    { key: "VIP", color: "#FCF3E4" },
+    { key: "Regular", color: "#EAF4FF" },
+    { key: "New", color: "#E4FAF7" },
+  ];
   const { data, headers } = ClientsData;
 
   const formattedHeader = () => {
     return headers.map((head) => ({
-      name: head.name,
+      name: <ClientHeader>{head.name}</ClientHeader>,
+      key: head.key,
     }));
   };
 
   const formattedData = () => {
-    return data.map((d) => ({}));
+    return data.map((d) => ({
+      name: <NameTypo>{d.name} </NameTypo>,
+      mobile: <MobileTypo> {d.mobile} </MobileTypo>,
+      email: <EmailTypo> {d.email} </EmailTypo>,
+      status: chipColors.map(
+        ({ key, color }) =>
+          d.status === key && (
+            <Chip label={d.status} sx={{ backgroundColor: `${color}` }} />
+          )
+      ),
+    }));
   };
 
   return (
-    <ReusableTable headers={headers} data={data} />
-
-    // <TableBox>
-    //   <Table>
-    //     <TableHeader />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //     <Body />
-    //   </Table>
-    // </TableBox>
+    <ReusableTable
+      headers={formattedHeader()}
+      data={formattedData()}
+      link={Link}
+    />
   );
 };
 

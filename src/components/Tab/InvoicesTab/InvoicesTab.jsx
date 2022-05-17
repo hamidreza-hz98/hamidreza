@@ -1,21 +1,9 @@
 import { Chip, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import ReusableTable from "../../ReusableTable/ReusableTable";
 import { HeaderTypo } from "../ProductsTab/ProductsTab.styles";
 import { RegularTypo, TotalTypo } from "./InvoicesTab.styles";
-
-const DynamicChip = ({ chipColor }) => {
-  console.log(chipColor);
-  const chipColors = {
-    Paid: "#E4FAF7",
-    Unpaid: "#FFE7EB",
-    Void: "#F6E3FF",
-    Refound: "#FCF3E4",
-    Exchange: "#E4FAF7",
-  };
-
-  return <Chip label={chipColor} color={chipColors.chipColor} />;
-};
 
 const InvoicesTab = () => {
   const InvoicesData = {
@@ -87,13 +75,13 @@ const InvoicesTab = () => {
     ],
   };
 
-  const chipColors = {
-    Paid: "#E4FAF7",
-    Unpaid: "#FFE7EB",
-    Void: "#F6E3FF",
-    Refound: "#FCF3E4",
-    Exchange: "#E4FAF7",
-  };
+  const chipColors = [
+    { key: "Paid", color: "#E4FAF7" },
+    { key: "Unpaid", color: "#FFE7EB" },
+    { key: "Void", color: "#F6E3FF" },
+    { key: "Refound", color: "#FCF3E4" },
+    { key: "Exchange", color: "#E4FAF7" },
+  ];
 
   const { headers, data } = InvoicesData;
 
@@ -106,7 +94,12 @@ const InvoicesTab = () => {
 
   const formattedData = () => {
     return data.map((d) => ({
-      status: <DynamicChip chipColor={d.status} />,
+      status: chipColors.map(
+        ({ key, color }) =>
+          d.status === key && (
+            <Chip label={d.status} sx={{ backgroundColor: `${color}` }} />
+          )
+      ),
       id: <RegularTypo>{d.id}</RegularTypo>,
       date: <RegularTypo>{d.date}</RegularTypo>,
       location: <RegularTypo>{d.location}</RegularTypo>,

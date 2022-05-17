@@ -47,6 +47,7 @@ export default function ModalForm({ openModal, setOpenModal }) {
     resolver: yupResolver(clientSchema),
   });
 
+  const { handleSubmit } = methods;
   const handleClose = () => {
     setOpenModal(false);
   };
@@ -57,19 +58,19 @@ export default function ModalForm({ openModal, setOpenModal }) {
 
   return (
     <div>
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(submitForm)}>
-          <Dialog
-            fullScreen
-            open={openModal}
-            onClose={handleClose}
-            TransitionComponent={Transition}
-            sx={{
-              "& .css-m9glnp-MuiPaper-root-MuiDialog-paper": {
-                backgroundColor: "#E5E5E5",
-              },
-            }}
-          >
+      <Dialog
+        fullScreen
+        open={openModal}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+        sx={{
+          "& .css-m9glnp-MuiPaper-root-MuiDialog-paper": {
+            backgroundColor: "#E5E5E5",
+          },
+        }}
+      >
+        <FormProvider {...methods}>
+          <form>
             <ModalHeader
               sx={{
                 position: "relative",
@@ -86,10 +87,10 @@ export default function ModalForm({ openModal, setOpenModal }) {
                 </HeaderTitle>
 
                 <Button
-                  type="submit"
+                  type="button"
+                  onClick={handleSubmit(submitForm)}
                   autoFocus
                   variant="contained"
-                  onClick={methods.handleSubmit(submitForm)}
                 >
                   save
                 </Button>
@@ -100,9 +101,9 @@ export default function ModalForm({ openModal, setOpenModal }) {
                 return <AccordionField key={accordion.id} data={accordion} />;
               })}
             </List>
-          </Dialog>
-        </form>
-      </FormProvider>
+          </form>
+        </FormProvider>
+      </Dialog>
     </div>
   );
 }
