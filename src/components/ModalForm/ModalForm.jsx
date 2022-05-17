@@ -3,6 +3,8 @@ import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { clientSchema } from "../../helperText/clientSchema";
+import { useDispatch } from "react-redux";
+import { createClient } from "../../redux/features/clientSlice";
 
 //mui components...
 import {
@@ -25,6 +27,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function ModalForm({ openModal, setOpenModal }) {
+  const dispatch = useDispatch();
+
   const accordions = [
     {
       title: "Personal details",
@@ -48,12 +52,13 @@ export default function ModalForm({ openModal, setOpenModal }) {
   });
 
   const { handleSubmit } = methods;
+
   const handleClose = () => {
     setOpenModal(false);
   };
 
   const submitForm = (data) => {
-    console.log("form submitted", data);
+    dispatch(createClient());
   };
 
   return (

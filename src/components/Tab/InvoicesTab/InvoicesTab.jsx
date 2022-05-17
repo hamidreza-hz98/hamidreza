@@ -1,6 +1,5 @@
-import { Chip, Typography } from "@mui/material";
+import { Chip, Container } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 import ReusableTable from "../../ReusableTable/ReusableTable";
 import { HeaderTypo } from "../ProductsTab/ProductsTab.styles";
 import { RegularTypo, TotalTypo } from "./InvoicesTab.styles";
@@ -106,7 +105,11 @@ const InvoicesTab = () => {
       total: <TotalTypo>{d.total}</TotalTypo>,
     }));
   };
-  return <ReusableTable headers={formattedHeaders()} data={formattedData()} />;
+  return (
+    <Container>
+      <ReusableTable headers={formattedHeaders()} data={formattedData()} />
+    </Container>
+  );
 };
 
 export default InvoicesTab;

@@ -1,3 +1,4 @@
+import { Container } from "@mui/material";
 import React from "react";
 import ReusableTable from "../../ReusableTable/ReusableTable";
 import {
@@ -69,7 +70,11 @@ const ProductsTab = () => {
     }));
   };
 
-  return <ReusableTable headers={formattedHeaders()} data={formattedData()} />;
+  return (
+    <Container>
+      <ReusableTable headers={formattedHeaders()} data={formattedData()} />
+    </Container>
+  );
 };
 
 export default ProductsTab;

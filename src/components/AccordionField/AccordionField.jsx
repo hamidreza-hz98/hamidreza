@@ -28,6 +28,8 @@ const AccordionField = (props) => {
         return <AdditionalDetails />;
       case "Address":
         return <Address />;
+      default:
+        return null;
     }
   };
 

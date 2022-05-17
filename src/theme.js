@@ -39,12 +39,20 @@ const theme = createTheme({
   palette,
 
   components: {
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#FFFFFF",
+          marginTop: 24,
+        },
+      },
+    },
     MuiTableRow: {
       styleOverrides: {
         root: {
           textDecoration: "none",
           ":hover": {
-            backgroundColor: "rgba(0.1,0.1,0.1,0.1)",
+            backgroundColor: "#F7F8FD",
           },
         },
       },
@@ -53,7 +61,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "8px",
-          width: "80%",
+          width: "88px",
           height: "36px",
           "& .MuiChip-label": {
             fontSize: "12px",

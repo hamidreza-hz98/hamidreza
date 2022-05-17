@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack, styled, Typography } from "@mui/material";
+import { Box, Container, styled, Typography } from "@mui/material";
 
 export const TypeContainer = styled(Container)({
   display: "flex",

@@ -1,4 +1,4 @@
-import { styled, Typography, Stack } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 
 export const Price = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.main,

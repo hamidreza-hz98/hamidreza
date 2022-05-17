@@ -25,7 +25,7 @@ const DateAndStatus = (props) => {
         {props.taskStatus === "Started" ? (
           <SvgIcon
             color="success"
-            sx={{ width: "16px", height: "17px", ml: "-4px" }}
+            sx={{ height: "17px", ml: "-4px" }}
             component={PlayCircleIcon}
           />
         ) : (

@@ -1,6 +1,5 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
-import Cell from "../Cell/Cell";
 import { useParams } from "react-router-dom";
 
 const TableRows = ({ headers, data, link }) => {

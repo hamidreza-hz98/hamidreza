@@ -24,6 +24,11 @@ const OnlineBooking = (props) => {
           label="Online Booking"
           color="primary"
           size="small"
+          sx={{
+            "& .MuiChip-label": {
+              color: "#FFFFFF",
+            },
+          }}
         />
       </ChipContainer>
       <PriceContainer>

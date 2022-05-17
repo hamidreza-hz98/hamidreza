@@ -1,14 +1,12 @@
 import {
   Box,
-  FormControl,
   Grid,
-  InputLabel,
   MenuItem,
-  Select,
   TextField,
+  Typography,
   useTheme,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { useFormContext } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
@@ -21,12 +19,6 @@ const PersonalDetails = () => {
   } = useFormContext();
 
   const theme = useTheme();
-
-  const style = {
-    width: "100%",
-    borderRadius: "8px",
-    height: "48px",
-  };
 
   return (
     <>
@@ -65,7 +57,12 @@ const PersonalDetails = () => {
         }}
       >
         <PhoneInput
-          inputStyle={style}
+          inputStyle={{
+            width: "100%",
+            borderRadius: "8px",
+            height: "48px",
+            borderColor: errors.mobile ? "red" : "",
+          }}
           country={"ae"}
           placeholder="Mobile number"
           value={watch("mobile")}
@@ -76,6 +73,19 @@ const PersonalDetails = () => {
           error={errors.mobile}
           helperText={errors.mobile && errors.mobile?.message}
         />
+        {errors.mobile && (
+          <Typography
+            sx={{
+              color: "#F43319",
+              backgroundColor: "rgba(244, 51, 25, 0.06)",
+              borderRadius: "8px",
+              fontSize: "12px",
+              paddingLeft: "12px",
+            }}
+          >
+            Please enter your mobile number
+          </Typography>
+        )}
       </Box>
 
       <TextField fullWidth label="Send notifications by" />

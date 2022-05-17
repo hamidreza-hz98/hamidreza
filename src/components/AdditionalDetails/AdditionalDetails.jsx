@@ -1,17 +1,8 @@
-import {
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  SvgIcon,
-  TextField,
-} from "@mui/material";
-import React, { useState } from "react";
+import { Grid, MenuItem, TextField } from "@mui/material";
+import React from "react";
 import { useFormContext } from "react-hook-form";
 
 const AdditionalDetails = () => {
-  const [value, setValue] = useState();
   const week = [
     "Monday",
     "Tuesday",

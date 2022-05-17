@@ -1,4 +1,4 @@
-import { Chip, styled, Typography } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 
 export const RegularTypo = styled(Typography)({
   fontWeight: "400",
