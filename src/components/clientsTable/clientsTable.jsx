@@ -1,7 +1,6 @@
 //react components...
 import React from "react";
-import { useDispatch } from "react-redux";
-import { readClient } from "../../redux/features/clientSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 //mui components...
 import { Chip } from "@mui/material";
@@ -18,7 +17,7 @@ import { Link } from "react-router-dom";
 
 const ClientsTable = () => {
   const dispatch = useDispatch();
-  dispatch(readClient());
+
   const ClientsData = {
     headers: [
       {
@@ -193,12 +192,14 @@ const ClientsTable = () => {
   };
 
   return (
-    <ReusableTable
-      headers={formattedHeader()}
-      data={formattedData()}
-      link={Link}
-      hasPadding={false}
-    />
+    <>
+      <ReusableTable
+        headers={formattedHeader()}
+        data={formattedData()}
+        link={Link}
+        hasPadding={false}
+      />
+    </>
   );
 };
 

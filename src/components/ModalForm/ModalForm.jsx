@@ -4,7 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { clientSchema } from "../../helperText/clientSchema";
 import { useDispatch } from "react-redux";
-import { createClient } from "../../redux/features/clientSlice";
+import { createClient } from "../../store/clients/clientSlice";
 
 //mui components...
 import {
@@ -57,8 +57,20 @@ export default function ModalForm({ openModal, setOpenModal }) {
     setOpenModal(false);
   };
 
+  // const submitForm = (data) => {
+  //   dispatch(createClient(data));
+  // };
+
   const submitForm = (data) => {
-    dispatch(createClient());
+    dispatch(
+      createClient({
+        id: 10,
+        name: "Luban Salsabil Safar",
+        mobile: "+965 60 00 12 87",
+        email: "LubanSalsabilSafar@dayrep.com",
+        status: "VIP",
+      })
+    );
   };
 
   return (
@@ -93,7 +105,7 @@ export default function ModalForm({ openModal, setOpenModal }) {
 
                 <Button
                   type="button"
-                  onClick={handleSubmit(submitForm)}
+                  onClick={submitForm}
                   autoFocus
                   variant="contained"
                 >

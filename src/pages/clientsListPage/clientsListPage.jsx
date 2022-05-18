@@ -15,6 +15,7 @@ const ClientsListpage = () => {
   const handleOpenModal = () => {
     setOpenModal(true);
   };
+
   return (
     <Container>
       <Grid container sx={{ width: "100%" }}>
