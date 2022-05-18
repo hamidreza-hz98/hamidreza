@@ -26,9 +26,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function ModalForm({ openModal, setOpenModal }) {
+export default function ModalForm({ openModal, setOpenModal, newClient }) {
   const dispatch = useDispatch();
-
+  console.log(newClient);
   const accordions = [
     {
       title: "Personal details",
@@ -57,20 +57,9 @@ export default function ModalForm({ openModal, setOpenModal }) {
     setOpenModal(false);
   };
 
-  // const submitForm = (data) => {
-  //   dispatch(createClient(data));
-  // };
-
   const submitForm = (data) => {
-    dispatch(
-      createClient({
-        id: 10,
-        name: "Luban Salsabil Safar",
-        mobile: "+965 60 00 12 87",
-        email: "LubanSalsabilSafar@dayrep.com",
-        status: "VIP",
-      })
-    );
+    dispatch(createClient(data));
+    handleClose();
   };
 
   return (
@@ -100,12 +89,12 @@ export default function ModalForm({ openModal, setOpenModal }) {
                   <SvgIcon component={CloseModal} />
                 </IconButton>
                 <HeaderTitle variant="h6" component="div">
-                  New Client
+                  {newClient ? "New Client" : "Edit Client"}
                 </HeaderTitle>
 
                 <Button
                   type="button"
-                  onClick={submitForm}
+                  onClick={handleSubmit(submitForm)}
                   autoFocus
                   variant="contained"
                 >
@@ -115,7 +104,13 @@ export default function ModalForm({ openModal, setOpenModal }) {
             </ModalHeader>
             <List>
               {accordions.map((accordion) => {
-                return <AccordionField key={accordion.id} data={accordion} />;
+                return (
+                  <AccordionField
+                    key={accordion.id}
+                    data={accordion}
+                    newClient={newClient}
+                  />
+                );
               })}
             </List>
           </form>

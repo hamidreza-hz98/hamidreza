@@ -10,7 +10,9 @@ import React from "react";
 import { useFormContext } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
-const PersonalDetails = () => {
+import { useSelector } from "react-redux";
+const PersonalDetails = ({ newClient }) => {
+  const { ids, entities } = useSelector((state) => state.clients);
   const {
     register,
     formState: { errors },

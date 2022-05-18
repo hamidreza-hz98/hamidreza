@@ -24,7 +24,11 @@ const ClientsListpage = () => {
         </Grid>
         <BtnContainer item xs={6}>
           <NewClient onClick={handleOpenModal}>New Client</NewClient>
-          <ModalForm openModal={openModal} setOpenModal={setOpenModal} />
+          <ModalForm
+            newClient={true}
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+          />
         </BtnContainer>
       </Grid>
       <ClientsTable />

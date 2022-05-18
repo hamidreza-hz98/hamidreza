@@ -15,7 +15,8 @@ const MainBody = () => {
       <DrawerHeader />
       <Routes>
         <Route path="/" exact element={<ClientsListpage />} />
-        <Route path=":id" element={<ClientProfilePage />} />
+        {/* <Route path="/profile" exact element={} /> */}
+        <Route path="/profile/:id" element={<ClientProfilePage />} />
       </Routes>
     </Main>
   );

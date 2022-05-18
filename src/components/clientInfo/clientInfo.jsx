@@ -1,5 +1,5 @@
 //react components...
-import React from "react";
+import React, { useState } from "react";
 
 //mui components...
 import { SvgIcon, Grid, Divider, Container } from "@mui/material";
@@ -17,15 +17,23 @@ import {
 //custom components...
 import ProfileData from "../profileData/profiledata";
 import ToggleSwitch from "../toggleSwitch/toggleSwitch";
+import ModalForm from "../ModalForm/ModalForm";
 
 //icons...
 import { ReactComponent as EditIcon } from "../../assets/profile/edit.svg";
 
 const ClientInfo = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
   return (
     <ProfileInfoContainer>
       <EditContainer>
-        <EditButton startIcon={<SvgIcon component={EditIcon} />}>
+        <EditButton
+          onClick={setOpenModal}
+          startIcon={<SvgIcon component={EditIcon} />}
+        >
           <EditText>Edit</EditText>
         </EditButton>
       </EditContainer>
@@ -49,6 +57,11 @@ const ClientInfo = () => {
           />
         </Grid>
       </ToggleGroup>
+      <ModalForm
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        newClient={false}
+      />
 
       <Divider sx={{ marginTop: "2rem" }} />
 

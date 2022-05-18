@@ -1,14 +1,12 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
 
 const TableRows = ({ headers, data, link }) => {
-  const { id } = useParams();
   return (
     <TableBody>
       <>
         {data.map((d) => (
-          <TableRow component={link} to={`${id}`}>
+          <TableRow component={link} to={`/profile/${d.id}`}>
             {headers.map((head) => (
               <TableCell>{d[head.key]}</TableCell>
             ))}

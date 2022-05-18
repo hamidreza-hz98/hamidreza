@@ -17,17 +17,17 @@ import PersonalDetails from "../PersonalDetails/PersonalDetails";
 import AdditionalDetails from "../AdditionalDetails/AdditionalDetails";
 import Address from "../Address/Address";
 
-const AccordionField = (props) => {
-  const { title, description } = props.data;
+const AccordionField = ({ data, newClient }) => {
+  const { title, description } = data;
 
   const handleFormtype = (title) => {
     switch (title) {
       case "Personal details":
-        return <PersonalDetails />;
+        return <PersonalDetails newClient={newClient} />;
       case "Additional details":
-        return <AdditionalDetails />;
+        return <AdditionalDetails newClient={newClient} />;
       case "Address":
-        return <Address />;
+        return <Address newClient={newClient} />;
       default:
         return null;
     }
