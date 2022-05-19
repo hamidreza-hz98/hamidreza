@@ -4,12 +4,16 @@ import TableHeader from "./TableHeader/TableHeader";
 import TableRows from "./TableRows/TableRows";
 
 const ReusableTable = (props) => {
-  const { headers, data, link } = props;
+  const { headers, data, onClick } = props;
   return (
     <TableContainer>
       <Table>
         <TableHeader headers={headers} />
-        <TableRows data={data} headers={headers} link={link} />
+        <TableRows
+          data={data}
+          headers={headers}
+          onClick={(data) => onClick(data)}
+        />
       </Table>
     </TableContainer>
   );

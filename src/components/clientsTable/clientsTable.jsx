@@ -1,7 +1,7 @@
 //react components...
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { allClients, selectClientById } from "../../store/clients/clientSlice";
 //mui components...
 import { Chip } from "@mui/material";
 
@@ -13,13 +13,9 @@ import {
   MobileTypo,
   NameTypo,
 } from "./clientsTable.styles";
-import { Link } from "react-router-dom";
 
 const ClientsTable = () => {
-  const tableData = useSelector((state) => state.clients);
-  const { ids, entities } = tableData;
-  console.log("ids", ids);
-  console.log("entites", entities);
+  const clients = useSelector(allClients);
 
   const headers = [
     {
@@ -54,21 +50,19 @@ const ClientsTable = () => {
   };
 
   const tempFormatted = () => {
-    return ids.map((id) => ({
+    return clients.map((client) => ({
+      id: client.id,
       name: (
         <NameTypo>
-          {entities[id].firstName} {entities[id].lastName}
+          {client.firstName} {client.lastName}
         </NameTypo>
       ),
-      mobile: <MobileTypo> {entities[id].mobile} </MobileTypo>,
-      email: <EmailTypo> {entities[id].email} </EmailTypo>,
+      mobile: <MobileTypo> {client.mobile} </MobileTypo>,
+      email: <EmailTypo> {client.email} </EmailTypo>,
       status: chipColors.map(
         ({ key, color }) =>
-          entities[id].status === key && (
-            <Chip
-              label={entities[id].status}
-              sx={{ backgroundColor: `${color}` }}
-            />
+          client.status === key && (
+            <Chip label={client.status} sx={{ backgroundColor: `${color}` }} />
           )
       ),
     }));
@@ -79,7 +73,7 @@ const ClientsTable = () => {
       <ReusableTable
         headers={formattedHeader()}
         data={tempFormatted()}
-        link={Link}
+        onClick={clients}
         hasPadding={false}
       />
     </>

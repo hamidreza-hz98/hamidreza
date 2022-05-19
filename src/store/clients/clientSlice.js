@@ -9,9 +9,9 @@ const { selectAll, selectById } = clientAdaptor.getSelectors(
   (state) => state.clients
 );
 
-export const allclients = selectAll;
+export const allClients = selectAll;
 
-export const selectclientById = (id) => (state) => selectById(state, id);
+export const selectClientById = (id) => (state) => selectById(state, id);
 
 const initialState = clientAdaptor.getInitialState();
 export const clientsSlice = createSlice({
@@ -23,6 +23,7 @@ export const clientsSlice = createSlice({
         ...payload,
         status: "New",
         email: "bill.sanders@example.com",
+        id: uuidv4(),
       });
     },
   },

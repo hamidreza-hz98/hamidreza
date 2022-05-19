@@ -13,7 +13,9 @@ import ClientInfo from "../../components/clientInfo/clientInfo";
 import SalesReport from "../../components/salesReport/salesReport";
 import CustomTab from "../../components/Tab/tab";
 
-const ClientProfilePage = () => {
+const ClientProfilePage = ({ match }) => {
+  const { clientId } = match.params;
+  console.log(clientId);
   return (
     <ProfilePageContainer container spacing={2}>
       <Grid item xs={3}>

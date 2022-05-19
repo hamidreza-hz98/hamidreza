@@ -16,7 +16,7 @@ const MainBody = () => {
       <Routes>
         <Route path="/" exact element={<ClientsListpage />} />
         {/* <Route path="/profile" exact element={} /> */}
-        <Route path="/profile/:id" element={<ClientProfilePage />} />
+        <Route path="/profile/:clientId" element={<ClientProfilePage />} />
       </Routes>
     </Main>
   );
