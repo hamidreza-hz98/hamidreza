@@ -16,6 +16,7 @@ import { ReactComponent as AccordionOpen } from "../../assets/modal/accordionArr
 import PersonalDetails from "../PersonalDetails/PersonalDetails";
 import AdditionalDetails from "../AdditionalDetails/AdditionalDetails";
 import Address from "../Address/Address";
+import ClientInfo from "../clientInfo/clientInfo";
 
 const AccordionField = ({ data, newClient }) => {
   const { title, description } = data;

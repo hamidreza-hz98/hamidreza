@@ -7,9 +7,10 @@ import {
   selectClientById,
 } from "../../../store/clients/clientSlice";
 
-const TableRows = ({ headers, data }) => {
+const TableRows = ({ headers, data, onClick }) => {
   const navigate = useNavigate();
   const handleClick = (data) => {
+    //onClick(data);
     navigate(`/profile/${data.id}`);
   };
   return (

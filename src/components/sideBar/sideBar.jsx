@@ -33,8 +33,9 @@ import { ReactComponent as Services } from "../../assets/sideBarVectors/services
 import { ReactComponent as Offers } from "../../assets/sideBarVectors/offers.svg";
 import { ReactComponent as Sales } from "../../assets/sideBarVectors/sales.svg";
 
-const SideBar = () => {
+const SideBar = ({ history }) => {
   const theme = useTheme();
+  console.log(history);
   const buttons = [
     {
       title: "Home",
@@ -81,7 +82,10 @@ const SideBar = () => {
       <List>
         {buttons.map((button) => (
           <ListItem key={button.id} sx={{ mr: theme.spacing(2) }}>
-            <ListItemButton>
+            <ListItemButton
+              button
+              onClick={() => history.push(`/${button.title.toLowerCase()}`)}
+            >
               <ListItemIcon>
                 <SvgIcon component={button.icon} sx={{ mr: "14.5px" }} />
                 <ButtonTitleText>{button.title}</ButtonTitleText>

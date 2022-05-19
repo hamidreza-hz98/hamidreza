@@ -48,7 +48,6 @@ const ClientsTable = () => {
       key: head.key,
     }));
   };
-
   const tempFormatted = () => {
     return clients.map((client) => ({
       id: client.id,

@@ -1,9 +1,7 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-const clientAdaptor = createEntityAdapter({
-  selectId: (client) => uuidv4(),
-});
+const clientAdaptor = createEntityAdapter({});
 
 const { selectAll, selectById } = clientAdaptor.getSelectors(
   (state) => state.clients
@@ -26,6 +24,9 @@ export const clientsSlice = createSlice({
         id: uuidv4(),
       });
     },
+  },
+  updateClient(state, { payload }) {
+    clientAdaptor.updateOne(state, payload);
   },
 });
 

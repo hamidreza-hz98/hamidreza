@@ -1,5 +1,5 @@
 //react components...
-import React from "react";
+import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { clientSchema } from "../../helperText/clientSchema";
@@ -22,30 +22,30 @@ import { HeaderTitle, ModalHeader } from "./ModalForm.styles";
 import { ReactComponent as CloseModal } from "../../assets/modal/closeModal.svg";
 import AccordionField from "../AccordionField/AccordionField";
 
+const accordions = [
+  {
+    title: "Personal details",
+    description: "Check & manage name, phone and more about this staff",
+    id: 1,
+  },
+  {
+    title: "Additional details",
+    description: "Check & gender, birth date, client notes, etc.",
+    id: 2,
+  },
+  {
+    title: "Address",
+    description: "Check & manage Avenue, Block, Street, Area, etc. ",
+    id: 3,
+  },
+];
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function ModalForm({ openModal, setOpenModal, newClient }) {
+const ModalForm = ({ openModal, setOpenModal, newClient, clientInfo }) => {
   const dispatch = useDispatch();
-  console.log(newClient);
-  const accordions = [
-    {
-      title: "Personal details",
-      description: "Check & manage name, phone and more about this staff",
-      id: 1,
-    },
-    {
-      title: "Additional details",
-      description: "Check & gender, birth date, client notes, etc.",
-      id: 2,
-    },
-    {
-      title: "Address",
-      description: "Check & manage Avenue, Block, Street, Area, etc. ",
-      id: 3,
-    },
-  ];
 
   const methods = useForm({
     resolver: yupResolver(clientSchema),
@@ -109,6 +109,7 @@ export default function ModalForm({ openModal, setOpenModal, newClient }) {
                     key={accordion.id}
                     data={accordion}
                     newClient={newClient}
+                    clientInfo={clientInfo}
                   />
                 );
               })}
@@ -118,4 +119,6 @@ export default function ModalForm({ openModal, setOpenModal, newClient }) {
       </Dialog>
     </div>
   );
-}
+};
+
+export default ModalForm;

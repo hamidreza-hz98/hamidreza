@@ -6,13 +6,17 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { selectClientById } from "../../store/clients/clientSlice";
 const PersonalDetails = ({ newClient }) => {
-  const { ids, entities } = useSelector((state) => state.clients);
+  const { clientId } = useParams();
+  const client = useSelector(selectClientById(clientId));
+
   const {
     register,
     formState: { errors },
@@ -22,6 +26,11 @@ const PersonalDetails = ({ newClient }) => {
 
   const theme = useTheme();
 
+  const [fieldValue, setFieldValue] = useState();
+
+  const handleChange = (e) => {
+    setFieldValue(e.target.value);
+  };
   return (
     <>
       <Grid container spacing={3}>
@@ -30,6 +39,8 @@ const PersonalDetails = ({ newClient }) => {
             fullWidth
             label="First Name"
             name="firstName"
+            value={fieldValue}
+            onChange={handleChange}
             error={errors.firstName}
             helperText={errors.firstName && errors.firstName?.message}
             {...register("firstName")}
@@ -95,6 +106,7 @@ const PersonalDetails = ({ newClient }) => {
       <TextField
         fullWidth
         select
+        label="Preferred language"
         name="preferredlanguage"
         error={errors.preferredlanguage}
         helperText={
