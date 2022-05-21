@@ -11,7 +11,7 @@ const TableRows = ({ headers, data, onClick }) => {
   const navigate = useNavigate();
   const handleClick = (data) => {
     //onClick(data);
-    navigate(`/profile/${data.id}`);
+    navigate(`/clients/${data.id}`);
   };
   return (
     <TableBody>

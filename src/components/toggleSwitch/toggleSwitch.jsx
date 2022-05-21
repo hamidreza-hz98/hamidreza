@@ -1,5 +1,5 @@
 //react components...
-import React from "react";
+import React, { useState } from "react";
 
 //mui components...
 import { FormControlLabel } from "@mui/material";
@@ -9,13 +9,13 @@ import {
   ToggleName,
 } from "./toggleSwitch.styles";
 
-const ToggleSwitch = (props) => {
+const ToggleSwitch = ({ toggleName, onChange, checked }) => {
   return (
     <ToggleContainer>
-      <ToggleName>{props.toggleName}</ToggleName>
+      <ToggleName>{toggleName}</ToggleName>
       <FormControlLabel
         control={
-          <CustomSwitch sx={{ m: 1 }} defaultChecked={props.defaultChecked} />
+          <CustomSwitch onChange={onChange} checked={checked} sx={{ m: 1 }} />
         }
       />
     </ToggleContainer>

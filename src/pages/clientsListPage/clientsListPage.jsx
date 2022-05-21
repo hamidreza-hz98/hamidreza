@@ -1,6 +1,6 @@
 //react components...
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+
 //mui components...
 import { Container, Grid } from "@mui/material";
 import { BtnContainer, NewClient } from "./clientsListPage.styles";
@@ -11,6 +11,7 @@ import ClientsTable from "../../components/clientsTable/clientsTable";
 import ModalForm from "../../components/ModalForm/ModalForm";
 
 const ClientsListpage = () => {
+  //a hook to consider when modal should open
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -18,7 +19,7 @@ const ClientsListpage = () => {
 
   return (
     <Container>
-      <Grid container sx={{ width: "100%" }}>
+      <Grid container>
         <Grid item xs={6}>
           <SearchButton />
         </Grid>

@@ -1,9 +1,14 @@
 //react components...
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectClientById,
+  updateClient,
+} from "../../store/clients/clientSlice";
 
 //mui components...
-import { SvgIcon, Grid, Divider, Container } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { SvgIcon, Grid, Divider, Container, Chip } from "@mui/material";
 import {
   ProfileInfoContainer,
   NewAppointmentButton,
@@ -22,21 +27,28 @@ import ModalForm from "../ModalForm/ModalForm";
 
 //icons...
 import { ReactComponent as EditIcon } from "../../assets/profile/edit.svg";
-import { useSelector } from "react-redux";
-import { selectClientById } from "../../store/clients/clientSlice";
 
 const ClientInfo = () => {
+  //get /:clientId from router and find the current client
   const { clientId } = useParams();
-
   const clientInfo = useSelector(selectClientById(clientId));
-
-  console.log(clientInfo);
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
+  //dispatch method makes us able to have access to our reducers
+  const dispatch = useDispatch();
+  //hook to open modal when clicked the Edit button
+  const [openModal, setOpenModal] = useState(false);
+  //user wont be able to activate both Block and VIP at the same time thanks to this code...:
+  const [vipChecked, setVipChecked] = useState(false);
+  const [blockChecked, setBlockChecked] = useState(false);
+  const handleBlockChecked = () => {
+    setBlockChecked(!blockChecked);
+    return vipChecked ? setVipChecked(false) : null;
+  };
+  const handleVipChecked = () => {
+    setVipChecked(!vipChecked);
+    dispatch(updateClient({ id: clientId, changes: { status: "VIP" } }));
+    return blockChecked ? setBlockChecked(false) : null;
   };
 
-  const [openModal, setOpenModal] = useState(false);
   return (
     <>
       <ProfileInfoContainer>
@@ -52,21 +64,33 @@ const ClientInfo = () => {
           {clientInfo?.firstName} {clientInfo?.lastName}
         </ClientName>
         <ClientName>
+          <Chip
+            label={vipChecked ? "VIP" : "Block"}
+            sx={{
+              mt: "14px",
+              backgroundColor: vipChecked ? "#FCF3E4" : "#FFE7EB",
+              display: vipChecked || blockChecked ? "flex-inline" : "none",
+            }}
+          />
+        </ClientName>
+        <ClientName>
           <NewAppointmentButton>New appointment</NewAppointmentButton>
         </ClientName>
         <ToggleGroup container>
           <Grid item>
             <ToggleSwitch
+              onChange={handleBlockChecked}
+              checked={blockChecked}
               toggleName="Block"
               sx={{ justifyContent: "start" }}
-              defaultChecked={false}
             />
           </Grid>
           <Grid item>
             <ToggleSwitch
+              onChange={handleVipChecked}
+              checked={vipChecked}
               toggleName="VIP"
               sx={{ justifyContent: "start" }}
-              defaultChecked={true}
             />
           </Grid>
         </ToggleGroup>

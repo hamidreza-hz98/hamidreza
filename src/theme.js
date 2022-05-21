@@ -39,6 +39,19 @@ const theme = createTheme({
   palette,
 
   components: {
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          "&.Mui-selected": {
+            backgroundColor: palette.primary.second,
+            borderRadius: "8px",
+
+            ":hover": { backgroundColor: palette.primary.second },
+          },
+        },
+      },
+    },
+
     MuiTableContainer: {
       styleOverrides: {
         root: {

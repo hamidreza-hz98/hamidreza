@@ -1,5 +1,5 @@
 //react components...
-import React from "react";
+import React, { useState } from "react";
 
 //mui components
 import {
@@ -9,18 +9,28 @@ import {
   Divider,
   SvgIcon,
 } from "@mui/material";
-import { Description, StyledAccordion, Title } from "./AccordionField.styles";
+import {
+  AccordionContainer,
+  Description,
+  StyledAccordion,
+  Title,
+} from "./AccordionField.styles";
 
 //icons...
 import { ReactComponent as AccordionOpen } from "../../assets/modal/accordionArrow.svg";
+
+//custom components...
 import PersonalDetails from "../PersonalDetails/PersonalDetails";
 import AdditionalDetails from "../AdditionalDetails/AdditionalDetails";
 import Address from "../Address/Address";
-import ClientInfo from "../clientInfo/clientInfo";
 
 const AccordionField = ({ data, newClient }) => {
   const { title, description } = data;
+  //if we want to create a new client, the modal's accordions will be closed
+  //otherwised (in case of editing clients, accordions will be shown expanded)
+  const [expanded, setExpanded] = useState(!newClient);
 
+  //decide which accordion would render each time in ModalForm's map function
   const handleFormtype = (title) => {
     switch (title) {
       case "Personal details":
@@ -35,14 +45,11 @@ const AccordionField = ({ data, newClient }) => {
   };
 
   return (
-    <Container
-      sx={{
-        maxWidth: "1450px !important",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <StyledAccordion>
+    <AccordionContainer>
+      <StyledAccordion
+        expanded={expanded}
+        onChange={() => setExpanded(!expanded)}
+      >
         <AccordionSummary
           sx={{
             padding: "9x",
@@ -60,7 +67,7 @@ const AccordionField = ({ data, newClient }) => {
           <Container>{handleFormtype(title)}</Container>
         </AccordionDetails>
       </StyledAccordion>
-    </Container>
+    </AccordionContainer>
   );
 };
 

@@ -1,5 +1,5 @@
 import { styled, Grid } from "@mui/material";
-import { SideBarButton } from "../../components/customButton/customButton.Styles";
+import { SideBarButton } from "../../components/customButton/customButton.styles";
 
 export const NewClient = styled(SideBarButton)(({ theme }) => ({
   width: "130px",

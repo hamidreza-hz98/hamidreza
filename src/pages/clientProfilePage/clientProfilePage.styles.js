@@ -1,9 +1,5 @@
 import { Box, Grid, styled } from "@mui/material";
 
-export const ProfilePageContainer = styled(Grid)(({ theme }) => ({
-  height: "97.4%",
-}));
-
 export const AppointmentsTabContainer = styled(Box)({
   backgroundColor: "#FFFFFF",
   height: "auto",

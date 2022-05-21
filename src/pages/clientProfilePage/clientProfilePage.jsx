@@ -1,13 +1,9 @@
 //react components...
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { allClients } from "../../store/clients/clientSlice";
+import React from "react";
+
 //mui components
-import { Grid, CircularProgress } from "@mui/material";
-import {
-  AppointmentsTabContainer,
-  ProfilePageContainer,
-} from "./clientProfilePage.styles";
+import { Grid } from "@mui/material";
+import { AppointmentsTabContainer } from "./clientProfilePage.styles";
 
 //custom components...
 import ClientInfo from "../../components/clientInfo/clientInfo";
@@ -17,7 +13,7 @@ import CustomTab from "../../components/Tab/tab";
 const ClientProfilePage = () => {
   return (
     <>
-      <ProfilePageContainer container spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={3}>
           <ClientInfo />
         </Grid>
@@ -27,7 +23,7 @@ const ClientProfilePage = () => {
             <CustomTab />
           </AppointmentsTabContainer>
         </Grid>
-      </ProfilePageContainer>
+      </Grid>
     </>
   );
 };

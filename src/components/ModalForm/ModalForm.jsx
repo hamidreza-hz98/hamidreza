@@ -1,10 +1,11 @@
 //react components...
-import React, { useState } from "react";
+import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { clientSchema } from "../../helperText/clientSchema";
 import { useDispatch } from "react-redux";
-import { createClient } from "../../store/clients/clientSlice";
+import { createClient, updateClient } from "../../store/clients/clientSlice";
+import { useParams } from "react-router-dom";
+import { clientSchema } from "../../helperText/clientSchema";
 
 //mui components...
 import {
@@ -18,8 +19,10 @@ import {
 } from "@mui/material";
 import { HeaderTitle, ModalHeader } from "./ModalForm.styles";
 
-//custom coomponent...
+//icons...
 import { ReactComponent as CloseModal } from "../../assets/modal/closeModal.svg";
+
+//custom components...
 import AccordionField from "../AccordionField/AccordionField";
 
 const accordions = [
@@ -40,25 +43,37 @@ const accordions = [
   },
 ];
 
+//adds some style to how the modal opens
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const ModalForm = ({ openModal, setOpenModal, newClient, clientInfo }) => {
+  //get the current client by Id
+  const { clientId } = useParams();
   const dispatch = useDispatch();
-
+  //here we resolve the yup validation to the app
   const methods = useForm({
     resolver: yupResolver(clientSchema),
   });
-
   const { handleSubmit } = methods;
 
   const handleClose = () => {
     setOpenModal(false);
   };
 
+  //when the form submits, data will be sent to redux to be stored as new entity or updated one
   const submitForm = (data) => {
-    dispatch(createClient(data));
+    console.log(data);
+    newClient
+      ? dispatch(createClient(data))
+      : dispatch(
+          updateClient({
+            id: clientId,
+            changes: data,
+          })
+        );
+
     handleClose();
   };
 
@@ -98,7 +113,7 @@ const ModalForm = ({ openModal, setOpenModal, newClient, clientInfo }) => {
                   autoFocus
                   variant="contained"
                 >
-                  save
+                  {newClient ? "Save" : "Update"}
                 </Button>
               </Toolbar>
             </ModalHeader>

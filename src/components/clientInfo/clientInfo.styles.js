@@ -1,12 +1,11 @@
 import { styled, Box, Typography, Grid, Button } from "@mui/material";
-import { SideBarButton } from "../customButton/customButton.Styles";
+import { SideBarButton } from "../customButton/customButton.styles";
 
-//styles for profile information...
 export const ProfileInfoContainer = styled(Box)({
   backgroundColor: "#FFFFFF",
   height: "100%",
   boxShadow: "inset 0px -1px 0px rgba(0, 0, 0, 0.1)",
-  marginBottom: "0px",
+  paddingBottom: "20px",
 });
 
 export const EditButton = styled(Button)({
@@ -20,7 +19,7 @@ export const EditButton = styled(Button)({
 export const EditContainer = styled(Box)({
   display: "flex",
   justifyContent: "end",
-  padding: "26px 24px 18px 0px",
+  padding: "20px 18px 12px 0px",
 });
 
 export const EditText = styled(Typography)(({ theme }) => ({

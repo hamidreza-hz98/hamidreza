@@ -26,11 +26,6 @@ const PersonalDetails = ({ newClient }) => {
 
   const theme = useTheme();
 
-  const [fieldValue, setFieldValue] = useState();
-
-  const handleChange = (e) => {
-    setFieldValue(e.target.value);
-  };
   return (
     <>
       <Grid container spacing={3}>
@@ -38,9 +33,9 @@ const PersonalDetails = ({ newClient }) => {
           <TextField
             fullWidth
             label="First Name"
+            id="outlined-required"
             name="firstName"
-            value={fieldValue}
-            onChange={handleChange}
+            defaultValue={newClient ? "" : client.firstName}
             error={errors.firstName}
             helperText={errors.firstName && errors.firstName?.message}
             {...register("firstName")}
@@ -50,7 +45,9 @@ const PersonalDetails = ({ newClient }) => {
           <TextField
             fullWidth
             label="Last Name"
+            id="outlined-required"
             name="lastName"
+            defaultValue={newClient ? "" : client.lastName}
             error={errors.lastName}
             helperText={errors.lastName && errors.lastName?.message}
             {...register("lastName")}
@@ -75,10 +72,12 @@ const PersonalDetails = ({ newClient }) => {
             borderRadius: "8px",
             height: "48px",
             borderColor: errors.mobile ? "red" : "",
+            color: theme.palette.text.main,
+            fontSize: "14px",
           }}
           country={"ae"}
           placeholder="Mobile number"
-          value={watch("mobile")}
+          value={newClient ? watch("mobile") : client.mobile}
           onChange={(phone) => {
             setValue("mobile", phone);
           }}
@@ -101,18 +100,26 @@ const PersonalDetails = ({ newClient }) => {
         )}
       </Box>
 
-      <TextField fullWidth label="Send notifications by" />
+      <TextField
+        fullWidth
+        label="Send notifications by"
+        id="outlined-required"
+        defaultValue={newClient ? "" : client.sendNotificationsBy}
+        {...register("sendNotificationsBy")}
+      />
 
       <TextField
         fullWidth
         select
         label="Preferred language"
-        name="preferredlanguage"
-        error={errors.preferredlanguage}
+        id="outlined-required"
+        name="preferredLanguage"
+        defaultValue={newClient ? "" : client.preferredLanguage}
+        error={errors.preferredLanguage}
         helperText={
-          errors.preferredlanguage && errors.preferredlanguage?.message
+          errors.preferredLanguage && errors.preferredlanguage?.message
         }
-        {...register("preferredlanguage")}
+        {...register("preferredLanguage")}
       >
         <MenuItem value="English">English</MenuItem>
         <MenuItem value="Arabic">Arabic</MenuItem>
