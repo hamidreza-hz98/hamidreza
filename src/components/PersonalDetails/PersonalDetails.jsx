@@ -1,3 +1,11 @@
+//react components...
+import React from "react";
+import { useFormContext } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { selectClientById } from "../../store/clients/clientSlice";
+
+//mui componetns...
 import {
   Box,
   Grid,
@@ -6,17 +14,17 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useFormContext } from "react-hook-form";
+
+//input components for phone number...
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { selectClientById } from "../../store/clients/clientSlice";
+
 const PersonalDetails = ({ newClient }) => {
+  //get the current client's id and entity
   const { clientId } = useParams();
   const client = useSelector(selectClientById(clientId));
 
+  //this method connects fields to yup
   const {
     register,
     formState: { errors },
@@ -24,6 +32,7 @@ const PersonalDetails = ({ newClient }) => {
     watch,
   } = useFormContext();
 
+  //useTheme hook ables us to hav access to custom themes
   const theme = useTheme();
 
   return (

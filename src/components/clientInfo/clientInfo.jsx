@@ -1,5 +1,5 @@
 //react components...
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -37,7 +37,9 @@ const ClientInfo = () => {
   //hook to open modal when clicked the Edit button
   const [openModal, setOpenModal] = useState(false);
   //user wont be able to activate both Block and VIP at the same time thanks to this code...:
-  const [vipChecked, setVipChecked] = useState(false);
+  const [vipChecked, setVipChecked] = useState(
+    clientInfo.status !== "VIP" ? true : false
+  );
   const [blockChecked, setBlockChecked] = useState(false);
   const handleBlockChecked = () => {
     setBlockChecked(!blockChecked);
@@ -45,7 +47,12 @@ const ClientInfo = () => {
   };
   const handleVipChecked = () => {
     setVipChecked(!vipChecked);
-    dispatch(updateClient({ id: clientId, changes: { status: "VIP" } }));
+    dispatch(
+      updateClient({
+        id: clientId,
+        changes: { status: vipChecked ? "New" : "VIP" },
+      })
+    );
     return blockChecked ? setBlockChecked(false) : null;
   };
 

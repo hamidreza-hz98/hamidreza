@@ -5,11 +5,11 @@ import React from "react";
 import { Box } from "@mui/material";
 import { Description, Title } from "./DetailedCase.styles";
 
-const DetailedCase = (props) => {
+const DetailedCase = ({ title, description }) => {
   return (
     <Box>
-      <Title>{props.title}</Title>
-      <Description>{props.description}</Description>
+      <Title>{title}</Title>
+      <Description>{description}</Description>
     </Box>
   );
 };

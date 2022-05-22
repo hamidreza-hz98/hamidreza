@@ -1,4 +1,4 @@
-import { Box, styled, Typography, Toolbar, AppBar } from "@mui/material";
+import { Box, styled, Typography, Toolbar } from "@mui/material";
 
 export const Text = styled(Typography)({
   color: "#0A1F44",
@@ -6,11 +6,6 @@ export const Text = styled(Typography)({
   marginLeft: "240px",
   fontSize: "24px",
   lineHeight: "30px",
-});
-
-export const CustomAppBar = styled(AppBar)({
-  width: "calc(100% - 240px)",
-  marginLeft: "240px",
 });
 
 export const Right = styled(Box)({
@@ -22,6 +17,7 @@ export const Right = styled(Box)({
 export const ToolBar = styled(Toolbar)(({ theme }) => ({
   justifyContent: "space-between",
   backgroundColor: theme.palette.base.main,
+  boxShadow: "inset 0px -1px 0px rgba(78, 93, 120, 0.25)",
 }));
 
 export const NavBox = styled(Box)({

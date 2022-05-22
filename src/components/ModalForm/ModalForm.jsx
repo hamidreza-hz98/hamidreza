@@ -8,16 +8,13 @@ import { useParams } from "react-router-dom";
 import { clientSchema } from "../../helperText/clientSchema";
 
 //mui components...
+import { Dialog, List, Slide, SvgIcon, IconButton } from "@mui/material";
 import {
-  Button,
-  Dialog,
-  List,
-  Toolbar,
-  Slide,
-  SvgIcon,
-  IconButton,
-} from "@mui/material";
-import { HeaderTitle, ModalHeader } from "./ModalForm.styles";
+  HeaderTitle,
+  ModalHeader,
+  ModalToolbar,
+  SubmitButton,
+} from "./ModalForm.styles";
 
 //icons...
 import { ReactComponent as CloseModal } from "../../assets/modal/closeModal.svg";
@@ -64,7 +61,6 @@ const ModalForm = ({ openModal, setOpenModal, newClient, clientInfo }) => {
 
   //when the form submits, data will be sent to redux to be stored as new entity or updated one
   const submitForm = (data) => {
-    console.log(data);
     newClient
       ? dispatch(createClient(data))
       : dispatch(
@@ -97,9 +93,7 @@ const ModalForm = ({ openModal, setOpenModal, newClient, clientInfo }) => {
                 position: "relative",
               }}
             >
-              <Toolbar
-                sx={{ display: "flex", justifyContent: "space-between" }}
-              >
+              <ModalToolbar>
                 <IconButton edge="start" color="inherit" onClick={handleClose}>
                   <SvgIcon component={CloseModal} />
                 </IconButton>
@@ -107,15 +101,15 @@ const ModalForm = ({ openModal, setOpenModal, newClient, clientInfo }) => {
                   {newClient ? "New Client" : "Edit Client"}
                 </HeaderTitle>
 
-                <Button
+                <SubmitButton
                   type="button"
                   onClick={handleSubmit(submitForm)}
                   autoFocus
                   variant="contained"
                 >
                   {newClient ? "Save" : "Update"}
-                </Button>
-              </Toolbar>
+                </SubmitButton>
+              </ModalToolbar>
             </ModalHeader>
             <List>
               {accordions.map((accordion) => {

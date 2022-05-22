@@ -5,11 +5,11 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { DataContainer, DataName } from "./profileData.styles";
 
-const ProfileData = (props) => {
+const ProfileData = ({ dataName, value }) => {
   return (
     <DataContainer>
-      <DataName>{props.dataName}</DataName>
-      <Typography>{props.value}</Typography>
+      <DataName>{dataName}</DataName>
+      <Typography>{value}</Typography>
     </DataContainer>
   );
 };

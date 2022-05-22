@@ -15,7 +15,7 @@ import {
 //icons...
 import { ReactComponent as Online } from "../../../../assets/appointments/onlineBooking.svg";
 
-const OnlineBooking = (props) => {
+const OnlineBooking = ({ item }) => {
   return (
     <Label>
       <ChipContainer>
@@ -32,8 +32,8 @@ const OnlineBooking = (props) => {
         />
       </ChipContainer>
       <PriceContainer>
-        <CurrentPrice>{props.item.price}</CurrentPrice>
-        <Deleted>{props.item.previousPrice}</Deleted>
+        <CurrentPrice>{item.price}</CurrentPrice>
+        <Deleted>{item.previousPrice}</Deleted>
       </PriceContainer>
     </Label>
   );

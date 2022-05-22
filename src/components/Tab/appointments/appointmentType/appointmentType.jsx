@@ -2,11 +2,10 @@
 import React from "react";
 
 //mui components...
-import { Grid } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import {
   AppointmentTitle,
   AppointmentDescription,
-  TypeContainer,
   PriceContainer,
 } from "./appointmentType.styles";
 
@@ -15,36 +14,48 @@ import DetailedCase from "../DetailedCase/DetailedCase";
 import OnlineBooking from "../onlineBooking/onlineBooking";
 import OutlineBooking from "./OutlineBooking/OutlineBooking";
 
-const AppointmentType = (props) => {
-  const { title, description, isOnlineBooking, hasDetails } = props.item;
+const AppointmentType = ({ item }) => {
+  const { title, description, isOnlineBooking, hasDetails } = item;
   return (
-    <TypeContainer>
-      <Grid container>
-        <Grid item xs={9}>
+    <Container sx={{ my: "4px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "start",
+        }}
+      >
+        <Box>
           <AppointmentTitle>{title}</AppointmentTitle>
           <AppointmentDescription>{description}</AppointmentDescription>
-          <PriceContainer>
-            {hasDetails &&
-              props.item.details.map((detail) => {
-                return (
-                  <DetailedCase
-                    key={detail.id}
-                    title={detail.title}
-                    description={detail.description}
-                  />
-                );
-              })}
-          </PriceContainer>
-        </Grid>
-        <Grid item xs={3} sx={{ mt: "7px" }}>
+        </Box>
+        <Box>
           {isOnlineBooking ? (
-            <OnlineBooking item={props.item} />
+            <OnlineBooking item={item} />
           ) : (
-            <OutlineBooking price={props.item.price} />
+            <OutlineBooking price={item.price} />
           )}
-        </Grid>
-      </Grid>
-    </TypeContainer>
+        </Box>
+      </Box>
+      <Box>
+        {hasDetails ? (
+          <PriceContainer>
+            <DetailedCase
+              title="Hair Coloring"
+              description="blood of crist, 40m with SoSo Al-Sherrer, 3:45pm"
+            />
+            <DetailedCase
+              title="Koutan blood"
+              description="blood of crist, 40m with SoSo Al-Sherrer, 3:45pm"
+            />
+            <DetailedCase
+              title="Blow Dry Premium"
+              description="blood of crist, 40m with SoSo Al-Sherrer, 3:45pm"
+            />
+          </PriceContainer>
+        ) : null}
+      </Box>
+    </Container>
   );
 };
 

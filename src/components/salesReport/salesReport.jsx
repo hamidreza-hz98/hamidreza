@@ -17,7 +17,7 @@ import {
 const SalesReport = () => {
   return (
     <SalesReportContainer>
-      <Grid container sx={{ height: "40%" }}>
+      <Grid container sx={{ height: "50%" }}>
         <ReportContainer item xs={6}>
           <ReportAmountText>KD 0</ReportAmountText>
           <ReportTypeText>Total Sales</ReportTypeText>
@@ -30,20 +30,20 @@ const SalesReport = () => {
 
       {/* Booking information comes here... */}
 
-      <BookingContainer container sx={{ gap: 2, height: "60%" }}>
-        <BookingBox item sx={3}>
+      <BookingContainer sx={{ height: "50%" }}>
+        <BookingBox item xs={3}>
           <BookingTypeText>All Bookings</BookingTypeText>
           <BookingAmount>9</BookingAmount>
         </BookingBox>
-        <BookingBox item sx={3}>
+        <BookingBox item xs={3}>
           <BookingTypeText>Completed</BookingTypeText>
           <BookingAmount>6</BookingAmount>
         </BookingBox>
-        <BookingBox item sx={3}>
+        <BookingBox item xs={3}>
           <BookingTypeText>Cancelled</BookingTypeText>
           <BookingAmount>2</BookingAmount>
         </BookingBox>
-        <BookingBox item sx={3}>
+        <BookingBox item xs={3}>
           <BookingTypeText>No Shows</BookingTypeText>
           <BookingAmount>1</BookingAmount>
         </BookingBox>

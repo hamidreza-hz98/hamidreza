@@ -1,4 +1,4 @@
-import { Box, Grid, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
 export const AppointmentsTabContainer = styled(Box)({
   backgroundColor: "#FFFFFF",

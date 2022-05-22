@@ -14,10 +14,10 @@ const ClientProfilePage = () => {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <ClientInfo />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={8}>
           <SalesReport />
           <AppointmentsTabContainer>
             <CustomTab />

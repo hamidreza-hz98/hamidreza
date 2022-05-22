@@ -9,8 +9,8 @@ import { DayContainer } from "./day.styles";
 import AppointmentType from "../appointmentType/appointmentType";
 import DateAndStatus from "../DateAndStatus/DateAndStatus";
 
-const DayDetails = (props) => {
-  const { date, weekday, taskStatus, cases } = props.appointment;
+const DayDetails = ({ appointment }) => {
+  const { date, weekday, taskStatus, cases } = appointment;
   return (
     <DayContainer container>
       <Grid item xs={2}>

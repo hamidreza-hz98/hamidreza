@@ -1,7 +1,5 @@
 //react components...
 import React from "react";
-import { useSelector } from "react-redux";
-import { allClients } from "../../store/clients/clientSlice";
 
 //mui components...
 import { Chip } from "@mui/material";
@@ -40,10 +38,7 @@ const chipColors = [
   { key: "New", color: "#E4FAF7" },
 ];
 
-const ClientsTable = () => {
-  //clients will be an array of all of our clients...
-  const clients = useSelector(allClients);
-
+const ClientsTable = ({ filteredClients }) => {
   //when we have a dynamic content(like ReusableTable),we can style it as lines below:
   const formattedHeader = () => {
     return headers.map((head) => ({
@@ -51,8 +46,9 @@ const ClientsTable = () => {
       key: head.key,
     }));
   };
-  const tempFormatted = () => {
-    return clients.map((client) => ({
+
+  const formattedRows = () => {
+    return filteredClients.map((client) => ({
       id: client.id,
       name: (
         <NameTypo>
@@ -74,8 +70,8 @@ const ClientsTable = () => {
     <>
       <ReusableTable
         headers={formattedHeader()}
-        data={tempFormatted()}
-        onClick={clients}
+        data={formattedRows()}
+        onClick={filteredClients}
         hasPadding={false}
       />
     </>

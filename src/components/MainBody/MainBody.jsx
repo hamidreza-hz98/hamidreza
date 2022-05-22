@@ -18,7 +18,7 @@ import SettingsPage from "../../pages/settings/settings";
 
 const MainBody = () => {
   return (
-    <Main open sx={{ height: "auto" }}>
+    <Main>
       <DrawerHeader />
       <Routes>
         <Route path="/clients" index exact element={<ClientsListpage />} />

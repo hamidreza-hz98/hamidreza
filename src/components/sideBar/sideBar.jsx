@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import {
   SideBarContainer,
-  SideBarLogo,
   LogoContainer,
   CloseContainer,
   CustomDivider,
@@ -22,6 +21,7 @@ import {
 } from "./sideBar.styles";
 
 //icons...
+import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
 import { ReactComponent as CloseButton } from "../../assets/sideBarVectors/closeButton.svg";
 import { ReactComponent as HomeIcon } from "../../assets/sideBarVectors/home.svg";
 import { ReactComponent as Calendar } from "../../assets/sideBarVectors/calendar.svg";
@@ -70,7 +70,7 @@ const buttons = [
   },
 ];
 
-const getRoutePath = (location, params) => {
+export const getRoutePath = (location, params) => {
   const pathname = location.pathname;
 
   if (!Object.keys(params).length) {
@@ -94,11 +94,10 @@ const SideBar = () => {
   const params = useParams();
   const path = getRoutePath(location, params);
 
-  console.log(path);
   return (
     <SideBarContainer variant="persistent" anchor="left" open>
       <LogoContainer>
-        <SideBarLogo />
+        <Logo />
       </LogoContainer>
 
       <List>
@@ -138,7 +137,7 @@ const SideBar = () => {
           </ListItem>
           <CustomDivider />
           <CloseContainer>
-            <SvgIcon component={CloseButton} />
+            <SvgIcon component={CloseButton} sx={{ cursor: "pointer" }} />
           </CloseContainer>
         </DownContainer>
       </List>

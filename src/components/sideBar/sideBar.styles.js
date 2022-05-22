@@ -1,6 +1,5 @@
 import { Box, Divider, Typography, Drawer } from "@mui/material";
 import { styled } from "@mui/system";
-import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
 import Color from "color";
 
 export const SideBarContainer = styled(Drawer)(({ theme }) => ({
@@ -24,15 +23,13 @@ export const LogoContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
 }));
 
-export const SideBarLogo = styled(Logo)({});
-
 export const MenuBox = styled(Box)({
   width: "100%",
 });
 
-export const LinksContainer = styled(Box)({
-  backgroundColor: "#4048D6",
-});
+export const LinksContainer = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+}));
 
 export const ButtonTitleText = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
@@ -63,5 +60,4 @@ export const CloseContainer = styled(Box)({
 
 export const DownContainer = styled(Box)({
   marginTop: "auto",
-  //marginBottom: "36.97px",
 });

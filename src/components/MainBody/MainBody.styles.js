@@ -1,10 +1,8 @@
 import { styled } from "@mui/material";
-import Color from "color";
 
 export const Main = styled("main")(({ theme }) => ({
-  backgroundColor: Color(`${theme.palette.base.second}`).alpha(0.2).string(),
   width: "100vw",
-  height: "100vh",
+  minHeight: "100vh",
   flexGrow: 1,
   padding: theme.spacing(3),
   marginLeft: 0,
