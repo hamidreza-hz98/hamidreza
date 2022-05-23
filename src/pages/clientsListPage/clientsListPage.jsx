@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { allClients } from "../../store/clients/clientSlice";
 
 //mui components...
-import { Container, Grid } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import { BtnContainer, NewClient } from "./clientsListPage.styles";
 
 //custom components...

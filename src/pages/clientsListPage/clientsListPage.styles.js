@@ -1,15 +1,10 @@
-import { styled, Grid } from "@mui/material";
+import { styled, Grid, Button } from "@mui/material";
 import { SideBarButton } from "../../components/customButton/customButton.styles";
 
-export const NewClient = styled(SideBarButton)(({ theme }) => ({
+export const NewClient = styled(Button)(({ theme }) => ({
   width: "130px",
-  height: "48px",
-  borderRadius: "8px",
-  display: "flex",
-  justifyContent: "center",
   marginTop: "20px",
   marginRight: "0px",
-  ":hover": { backgroundColor: theme.palette.primary.second },
 }));
 
 export const BtnContainer = styled(Grid)({

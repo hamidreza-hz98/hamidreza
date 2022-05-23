@@ -1,4 +1,11 @@
-import { styled, Box, Typography, Grid, Button } from "@mui/material";
+import {
+  styled,
+  Box,
+  Typography,
+  Grid,
+  Button,
+  RadioGroup,
+} from "@mui/material";
 import { SideBarButton } from "../customButton/customButton.styles";
 
 export const ProfileInfoContainer = styled(Box)({
@@ -9,11 +16,11 @@ export const ProfileInfoContainer = styled(Box)({
 });
 
 export const EditButton = styled(Button)({
-  width: "50",
-  height: "10",
-  padding: "0px",
-  textTransform: "capitalize",
+  width: "50px",
+  height: "10px",
   color: "#4048D6",
+  backgroundColor: "white",
+  "&:hover": { backgroundColor: "#F7F8FD" },
 });
 
 export const EditContainer = styled(Box)({
@@ -32,9 +39,7 @@ export const EditText = styled(Typography)(({ theme }) => ({
 
 export const NewAppointmentButton = styled(SideBarButton)({
   width: "80%",
-  height: "48px",
-  display: "flex",
-  justifyContent: "center",
+
   marginTop: "20px",
   ":hover": { backgroundColor: "#3D43CA" },
 });
@@ -45,6 +50,13 @@ export const ClientName = styled(Typography)({
   fontWeight: "700",
   display: "flex",
   justifyContent: "center",
+  wordBreak: "break-word",
+});
+
+export const AddressTypo = styled(Typography)({
+  fontSize: "16px",
+  lineHeight: "16px",
+  fontWeight: "700",
 });
 
 export const ToggleGroup = styled(Grid)({
@@ -52,10 +64,4 @@ export const ToggleGroup = styled(Grid)({
   alignItems: "center",
   justifyContent: "center",
   marginTop: "12px",
-});
-
-export const AddressTypo = styled(Typography)({
-  fontSize: "16px",
-  lineHeight: "16px",
-  fontWeight: "700",
 });

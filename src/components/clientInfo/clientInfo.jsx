@@ -8,13 +8,12 @@ import {
 } from "../../store/clients/clientSlice";
 
 //mui components...
-import { SvgIcon, Grid, Divider, Container, Chip } from "@mui/material";
+import { SvgIcon, Grid, Divider, Container, Chip, Button } from "@mui/material";
 import {
+  ToggleGroup,
   ProfileInfoContainer,
-  NewAppointmentButton,
   EditButton,
   ClientName,
-  ToggleGroup,
   AddressTypo,
   EditContainer,
   EditText,
@@ -28,6 +27,13 @@ import ModalForm from "../ModalForm/ModalForm";
 //icons...
 import { ReactComponent as EditIcon } from "../../assets/profile/edit.svg";
 
+const statusList = [
+  { name: "VIP", color: "#FCF3E4" },
+  { name: "Block", color: "#FFE7EB" },
+  { name: "Regular", color: "#FFE7EB" },
+  { name: "New", color: "#E4FAF7" },
+];
+
 const ClientInfo = () => {
   //get /:clientId from router and find the current client
   const { clientId } = useParams();
@@ -36,6 +42,7 @@ const ClientInfo = () => {
   const dispatch = useDispatch();
   //hook to open modal when clicked the Edit button
   const [openModal, setOpenModal] = useState(false);
+
   //user wont be able to activate both Block and VIP at the same time thanks to this code...:
   const [vipChecked, setVipChecked] = useState(
     clientInfo.status !== "VIP" ? true : false
@@ -55,7 +62,6 @@ const ClientInfo = () => {
     );
     return blockChecked ? setBlockChecked(false) : null;
   };
-
   return (
     <>
       <ProfileInfoContainer>
@@ -81,7 +87,14 @@ const ClientInfo = () => {
           />
         </ClientName>
         <ClientName>
-          <NewAppointmentButton>New appointment</NewAppointmentButton>
+          <Button
+            sx={{
+              width: "80%",
+              mt: "20px",
+            }}
+          >
+            New appointment
+          </Button>
         </ClientName>
         <ToggleGroup container>
           <Grid item>
@@ -101,7 +114,6 @@ const ClientInfo = () => {
             />
           </Grid>
         </ToggleGroup>
-
         <Divider sx={{ marginTop: "2rem" }} />
 
         <ProfileData dataName="Mobile" value={`+${clientInfo?.mobile}`} />

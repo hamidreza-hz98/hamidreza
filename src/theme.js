@@ -39,6 +39,46 @@ const theme = createTheme({
   palette,
 
   components: {
+    MuiRadioGroup: {
+      styleOverrides: {
+        root: {
+          width: "100%",
+          display: "flex",
+          alignItems: "end",
+          justifyContent: "end",
+          marginTop: "24px",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: palette.primary.main,
+          paddingTop: "8px",
+          textTransform: "capitalize",
+          color: "#FFFFFF",
+          textAlign: "start",
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          height: "48px",
+          fontSize: "15px",
+          borderRadius: "8px",
+          "&:hover": { backgroundColor: palette.primary.second },
+          "&:active": {
+            backgroundColor: palette.primary.second,
+            borderRadius: "8px",
+          },
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          wordBreak: "break-word",
+        },
+      },
+    },
     MuiListItemButton: {
       styleOverrides: {
         root: {
@@ -87,6 +127,7 @@ const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
+          borderRadius: "8px",
           ".MuiFormHelperText-root": {
             color: "#F43319",
             backgroundColor: "rgba(244, 51, 25, 0.06)",
@@ -100,6 +141,9 @@ const theme = createTheme({
           },
           "& label.Mui-focused": {
             color: palette.text.second,
+            "& .css-htfbeg-MuiFormLabel-root-MuiInputLabel-root": {
+              top: "33px",
+            },
           },
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
@@ -117,9 +161,33 @@ const theme = createTheme({
             },
           },
           borderColor: "1px solid rgba(64, 72, 214, 0.4)",
+          marginTop: "32px",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
           borderRadius: "8px",
           height: "48px",
-          marginTop: "32px",
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          "& .css-1m4d3w7": {
+            height: "120px !important",
+          },
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          position: "absolute",
+          top: "-4px !important",
+          left: "-1px !important",
         },
       },
     },

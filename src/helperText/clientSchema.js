@@ -7,13 +7,10 @@ export const clientSchema = yup.object().shape({
   lastName: yup.string().required("Please enter your last name"),
   mobile: yup.string().required("Please enter your mobile number"),
   sendNotificationsBy: yup.string(),
-  preferredLanguage: yup
-    .string()
-    .required()
-    .required("Please select preferred language "),
+  preferredLanguage: yup.string().required("Please select preferred language "),
   gender: yup.string().required("Please select your gender"),
   referralSource: yup.string(),
-  birthDay: yup.string().required().required("Please select your gender"),
+  birthDay: yup.string().required().required("Please select your birthday"),
   birthMonth: yup.string().required("Please select your birthday Month"),
   birthYear: yup.string().required("Please select your birth year"),
   notes: yup.string(),

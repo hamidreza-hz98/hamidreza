@@ -213,6 +213,14 @@ const AdditionalDetails = ({ newClient }) => {
         </Grid>
       </Grid>
       <TextField
+        sx={{
+          ".MuiInputBase-root": {
+            height: "120px !important",
+            ".MuiOutlinedInput-input": {
+              height: "100% !important",
+            },
+          },
+        }}
         fullWidth
         multiline
         rows={2}

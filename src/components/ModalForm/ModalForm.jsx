@@ -8,13 +8,15 @@ import { useParams } from "react-router-dom";
 import { clientSchema } from "../../helperText/clientSchema";
 
 //mui components...
-import { Dialog, List, Slide, SvgIcon, IconButton } from "@mui/material";
 import {
-  HeaderTitle,
-  ModalHeader,
-  ModalToolbar,
-  SubmitButton,
-} from "./ModalForm.styles";
+  Dialog,
+  List,
+  Slide,
+  SvgIcon,
+  IconButton,
+  Button,
+} from "@mui/material";
+import { HeaderTitle, ModalHeader, ModalToolbar } from "./ModalForm.styles";
 
 //icons...
 import { ReactComponent as CloseModal } from "../../assets/modal/closeModal.svg";
@@ -94,21 +96,22 @@ const ModalForm = ({ openModal, setOpenModal, newClient, clientInfo }) => {
               }}
             >
               <ModalToolbar>
-                <IconButton edge="start" color="inherit" onClick={handleClose}>
+                <IconButton edge="start" onClick={handleClose}>
                   <SvgIcon component={CloseModal} />
                 </IconButton>
                 <HeaderTitle variant="h6" component="div">
                   {newClient ? "New Client" : "Edit Client"}
                 </HeaderTitle>
 
-                <SubmitButton
+                <Button
+                  sx={{ width: "106px" }}
                   type="button"
                   onClick={handleSubmit(submitForm)}
                   autoFocus
                   variant="contained"
                 >
                   {newClient ? "Save" : "Update"}
-                </SubmitButton>
+                </Button>
               </ModalToolbar>
             </ModalHeader>
             <List>

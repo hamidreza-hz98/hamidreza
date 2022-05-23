@@ -126,7 +126,7 @@ const PersonalDetails = ({ newClient }) => {
         defaultValue={newClient ? "" : client.preferredLanguage}
         error={errors.preferredLanguage}
         helperText={
-          errors.preferredLanguage && errors.preferredlanguage?.message
+          errors.preferredLanguage && errors.preferredLanguage?.message
         }
         {...register("preferredLanguage")}
       >

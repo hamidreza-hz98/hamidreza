@@ -5,12 +5,11 @@ export const ToggleContainer = styled(FormGroup)({
   justifyContent: "end",
   alignItems: "center",
   flexDirection: "row",
-  marginLeft: "0",
 });
 
 export const ToggleName = styled(Typography)({
-  fontSize: "14",
-  marginRight: "8px",
+  fontSize: "14px",
+  marginRight: "6px",
 });
 
 export const CustomSwitch = styled(Switch)(({ theme }) => ({

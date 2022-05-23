@@ -11,15 +11,6 @@ export const ModalToolbar = styled(Toolbar)({
   height: "80px",
 });
 
-export const SubmitButton = styled(Button)({
-  textTransform: "capitalize",
-  height: "48px",
-  width: "106px",
-  fontSize: "16px",
-  lineHeight: "20px",
-  borderRadius: "8px",
-});
-
 export const HeaderTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.main,
   fontWeight: "700",
