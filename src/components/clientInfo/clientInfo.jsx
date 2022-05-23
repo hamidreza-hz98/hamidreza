@@ -26,6 +26,7 @@ import ModalForm from "../ModalForm/ModalForm";
 
 //icons...
 import { ReactComponent as EditIcon } from "../../assets/profile/edit.svg";
+import ReusableToggle from "../ReusableToggle/ReusableToggle";
 
 const statusList = [
   { name: "VIP", color: "#FCF3E4" },
@@ -96,24 +97,9 @@ const ClientInfo = () => {
             New appointment
           </Button>
         </ClientName>
-        <ToggleGroup container>
-          <Grid item>
-            <ToggleSwitch
-              onChange={handleBlockChecked}
-              checked={blockChecked}
-              toggleName="Block"
-              sx={{ justifyContent: "start" }}
-            />
-          </Grid>
-          <Grid item>
-            <ToggleSwitch
-              onChange={handleVipChecked}
-              checked={vipChecked}
-              toggleName="VIP"
-              sx={{ justifyContent: "start" }}
-            />
-          </Grid>
-        </ToggleGroup>
+
+        <ReusableToggle data={statusList} />
+
         <Divider sx={{ marginTop: "2rem" }} />
 
         <ProfileData dataName="Mobile" value={`+${clientInfo?.mobile}`} />
