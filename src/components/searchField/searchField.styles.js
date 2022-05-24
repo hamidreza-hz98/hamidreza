@@ -8,6 +8,7 @@ export const Field = styled(TextField)({
   alignItems: "start",
   borderRadius: "8px",
   justifyContent: "center",
+  border: "none",
   background: "rgba(234, 234, 234, 0.4)",
   "& .MuiInput-root": {
     width: "100%",

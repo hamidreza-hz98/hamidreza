@@ -8,32 +8,34 @@ import {
 } from "../../store/clients/clientSlice";
 
 //mui components...
-import { SvgIcon, Grid, Divider, Container, Chip, Button } from "@mui/material";
 import {
-  ToggleGroup,
+  SvgIcon,
+  Divider,
+  Container,
+  Chip,
+  FormControlLabel,
+  Button,
+  Box,
+  Grid,
+} from "@mui/material";
+import {
   ProfileInfoContainer,
   EditButton,
   ClientName,
   AddressTypo,
   EditContainer,
   EditText,
+  StatusSwitch,
 } from "./clientInfo.styles";
 
 //custom components...
 import ProfileData from "../profileData/profiledata";
-import ToggleSwitch from "../toggleSwitch/toggleSwitch";
+
 import ModalForm from "../ModalForm/ModalForm";
 
 //icons...
 import { ReactComponent as EditIcon } from "../../assets/profile/edit.svg";
-import ReusableToggle from "../ReusableToggle/ReusableToggle";
-
-const statusList = [
-  { name: "VIP", color: "#FCF3E4" },
-  { name: "Block", color: "#FFE7EB" },
-  { name: "Regular", color: "#FFE7EB" },
-  { name: "New", color: "#E4FAF7" },
-];
+import { statusData } from "../clientsTable/clientsTable";
 
 const ClientInfo = () => {
   //get /:clientId from router and find the current client
@@ -44,25 +46,22 @@ const ClientInfo = () => {
   //hook to open modal when clicked the Edit button
   const [openModal, setOpenModal] = useState(false);
 
-  //user wont be able to activate both Block and VIP at the same time thanks to this code...:
-  const [vipChecked, setVipChecked] = useState(
-    clientInfo.status !== "VIP" ? true : false
-  );
-  const [blockChecked, setBlockChecked] = useState(false);
-  const handleBlockChecked = () => {
-    setBlockChecked(!blockChecked);
-    return vipChecked ? setVipChecked(false) : null;
+  //functionality of changing state...
+  const handleChangeStatus = (e) => {
+    const activeStatus = e.target.name;
+    statusData.map((item) => {
+      return (
+        activeStatus === item.key &&
+        dispatch(
+          updateClient({
+            id: clientId,
+            changes: { status: activeStatus },
+          })
+        )
+      );
+    });
   };
-  const handleVipChecked = () => {
-    setVipChecked(!vipChecked);
-    dispatch(
-      updateClient({
-        id: clientId,
-        changes: { status: vipChecked ? "New" : "VIP" },
-      })
-    );
-    return blockChecked ? setBlockChecked(false) : null;
-  };
+
   return (
     <>
       <ProfileInfoContainer>
@@ -77,15 +76,14 @@ const ClientInfo = () => {
         <ClientName>
           {clientInfo?.firstName} {clientInfo?.lastName}
         </ClientName>
-        <ClientName>
-          <Chip
-            label={vipChecked ? "VIP" : "Block"}
-            sx={{
-              mt: "14px",
-              backgroundColor: vipChecked ? "#FCF3E4" : "#FFE7EB",
-              display: vipChecked || blockChecked ? "flex-inline" : "none",
-            }}
-          />
+        <ClientName sx={{ mt: 2 }}>
+          {statusData.map((item) => {
+            return (
+              clientInfo.status === item.key && (
+                <Chip label={item.key} sx={{ bgcolor: item.color }} />
+              )
+            );
+          })}
         </ClientName>
         <ClientName>
           <Button
@@ -97,8 +95,27 @@ const ClientInfo = () => {
             New appointment
           </Button>
         </ClientName>
-
-        <ReusableToggle data={statusList} />
+        <Grid
+          container
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mt: 3,
+          }}
+        >
+          {statusData.map((item) => {
+            return (
+              <FormControlLabel
+                onChange={handleChangeStatus}
+                checked={item.key === clientInfo.status}
+                label={item.key}
+                name={item.key}
+                control={<StatusSwitch sx={{ m: 1 }} />}
+              />
+            );
+          })}
+        </Grid>
 
         <Divider sx={{ marginTop: "2rem" }} />
 

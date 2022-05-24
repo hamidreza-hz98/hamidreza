@@ -39,6 +39,14 @@ const theme = createTheme({
   palette,
 
   components: {
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          direction: "rtl",
+          m: 0,
+        },
+      },
+    },
     MuiRadioGroup: {
       styleOverrides: {
         root: {

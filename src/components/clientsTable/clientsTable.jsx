@@ -32,7 +32,7 @@ const headers = [
   },
 ];
 
-const chipColors = [
+export const statusData = [
   { key: "VIP", color: "#FCF3E4" },
   { key: "Regular", color: "#EAF4FF" },
   { key: "New", color: "#E4FAF7" },
@@ -57,7 +57,7 @@ const ClientsTable = ({ filteredClients }) => {
       ),
       mobile: <MobileTypo> {client.mobile} </MobileTypo>,
       email: <EmailTypo> {client.email} </EmailTypo>,
-      status: chipColors.map(
+      status: statusData.map(
         ({ key, color }) =>
           client.status === key && (
             <Chip label={client.status} sx={{ backgroundColor: `${color}` }} />

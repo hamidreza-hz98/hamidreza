@@ -30,6 +30,7 @@ export const clientsSlice = createSlice({
       clientAdaptor.addOne(state, {
         ...payload,
         status: "New",
+        statusColor: "#E4FAF7",
         email: "bill.sanders@example.com",
         id: uuidv4(),
       });

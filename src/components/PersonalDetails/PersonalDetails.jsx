@@ -18,6 +18,7 @@ import {
 //input components for phone number...
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
+import { PhoneNumber } from "./PersonalDetails.styles";
 
 const PersonalDetails = ({ newClient }) => {
   //get the current client's id and entity
@@ -75,14 +76,9 @@ const PersonalDetails = ({ newClient }) => {
           },
         }}
       >
-        <PhoneInput
+        <PhoneNumber
           inputStyle={{
-            width: "100%",
-            borderRadius: "8px",
-            height: "48px",
             borderColor: errors.mobile ? "red" : "",
-            color: theme.palette.text.main,
-            fontSize: "14px",
           }}
           country={"ae"}
           placeholder="Mobile number"
